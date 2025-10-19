@@ -1,4 +1,4 @@
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "../ui/accordion"
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 
 const FAQS = [
   { q: "What is a Datathon?", a: "A Datathon is a competitive event where participants leverage data science, machine learning, and analytics to solve real-world problems using large datasets. Teams work within a fixed timeframe to analyze data, build models, and present actionable insights or solutions." },

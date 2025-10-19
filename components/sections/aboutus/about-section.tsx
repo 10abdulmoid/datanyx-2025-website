@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useMemo, useRef, useState } from 'react'
-import About from '@/components/sections/images'
+import About from '@/components/sections/aboutus/images'
 
 type Stat = { label: string; value: string }
 
