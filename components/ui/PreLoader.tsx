@@ -14,13 +14,30 @@ export default function FullscreenPreloader({
   const [phase, setPhase] = useState<'loading' | 'fading'>('loading')
   const rafRef = useRef<number | null>(null)
   const fadeTimeoutRef = useRef<number | null>(null)
+  const startTimeRef = useRef<number | null>(null)
+  const pausedTimeRef = useRef<number>(0)
+  const lastFrameTimeRef = useRef<number>(0)
+
+  const isTabActive = () => document.visibilityState === 'visible'
 
   useEffect(() => {
-    const start = performance.now()
     const tick = (t: number) => {
-      const p = Math.min((t - start) / durationMs, 1)
+      if (!isTabActive()) {
+        lastFrameTimeRef.current = t
+        rafRef.current = requestAnimationFrame(tick)
+        return
+      }
+
+      if (startTimeRef.current === null) startTimeRef.current = t
+      if (lastFrameTimeRef.current && pausedTimeRef.current > 0) {
+        startTimeRef.current += t - lastFrameTimeRef.current // Adjust start time to pause duration
+        pausedTimeRef.current = 0
+      }
+
+      const p = Math.min((t - startTimeRef.current) / durationMs, 1)
       const eased = 1 - Math.pow(1 - p, 3)
       setPct(Math.round(eased * 100))
+
       if (p < 1) {
         rafRef.current = requestAnimationFrame(tick)
       } else {
@@ -29,11 +46,25 @@ export default function FullscreenPreloader({
           onDone()
         }, 600)
       }
+
+      lastFrameTimeRef.current = t
     }
+
     rafRef.current = requestAnimationFrame(tick)
+
+    // Pause timer when user leaves tab
+    const handleVisibilityChange = () => {
+      if (document.hidden) {
+        pausedTimeRef.current += performance.now() - (lastFrameTimeRef.current || 0)
+      }
+    }
+
+    document.addEventListener('visibilitychange', handleVisibilityChange)
+
     return () => {
       if (rafRef.current !== null) cancelAnimationFrame(rafRef.current)
       if (fadeTimeoutRef.current !== null) clearTimeout(fadeTimeoutRef.current)
+      document.removeEventListener('visibilitychange', handleVisibilityChange)
     }
   }, [durationMs, onDone])
 
@@ -56,13 +87,13 @@ export default function FullscreenPreloader({
             transform: scale(1);
           }
         }
-        
+
         .logo {
           width: clamp(200px, 50vw, 600px);
           height: auto;
           animation: fadeInScale 800ms ease-out;
         }
-        
+
         .progress-container {
           animation: fadeInScale 800ms ease-out 200ms backwards;
         }

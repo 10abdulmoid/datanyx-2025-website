@@ -3,13 +3,13 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import HeroSection from "../components/hero-section";
 import Navbar from "../components/navbar";
-import AboutSection from "../components/sections/about-section";
-import DomainsSection from "../components/sections/domains-section";
-import ScheduleSection from "../components/sections/schedule-section";
-import PrizesSection from "../components/sections/prizes-section";
-import SponsorsSection from "../components/sections/sponsors-section";
-import FaqsSection from "../components/sections/faqs-section";
-import Organizers from "@/components/sections/organizers";
+import AboutSection from "../components/sections/aboutus/about-section";
+import DomainsSection from "../components/sections/tracks/tracks-section";
+import ScheduleSection from "../components/sections/timeline/schedule-section";
+import PrizesSection from "../components/sections/prizes/prizes-section";
+import SponsorsSection from "../components/sections/sponsors/sponsors-section";
+import FaqsSection from "@/components/sections/faqs/faqs-section";
+import Organizers from "@/components/sections/organizers/organizers";
 import Footer from "../components/footer";
 import FullscreenPreloader from "@/components/ui/PreLoader";
 import StarBorder from "@/components/ui/StarBorder_button";
@@ -90,22 +90,10 @@ export default function Page() {
           <SponsorsSection />
           <FaqsSection />
           <Organizers />
-          {/* <StarBorder
-            as="a"
-            href="https://unstop.com/hackathons/datanyx-muffakham-jah-college-of-engineering-technology-1188761"
-            target="_blank"
-            rel="noopener noreferrer"
-            color="white"
-            speed="6s"
-            className="cursor-pointer mx-auto"
-            style={{ textDecoration: "none" }}
-          >
-            Datanyx’24
-          </StarBorder> */}
           <Footer />
         </div>
 
-        {/* Chat Interface */}
+        {/* Chatbot */}
         <ChatInterface />
       </main>
     </>
