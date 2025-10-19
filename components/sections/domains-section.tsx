@@ -72,7 +72,7 @@ export function DomainsSection() {
             background: 'none',
           }}
         >
-          DOMAINS
+          TRACKS
         </h1>
         
         <div className="backdrop-blur-sm bg-black/20 rounded-xl p-6 border border-cyan-500/20 shadow-lg shadow-cyan-500/5">

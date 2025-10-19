@@ -332,7 +332,7 @@ export default function Navbar() {
           {/* Desktop Menu with Sliding Tabs */}
           <div className="navbar-menu">
             <SlideTabs
-              items={["HOME", "ABOUT", "DOMAINS", "SCHEDULE", "PRIZES", "SPONSORS", "FAQS"]}
+              items={["HOME", "ABOUT", "TRACKS", "SCHEDULE", "PRIZES", "SPONSORS", "FAQS"]}
               onItemClick={handleSmoothScroll}
             />
           </div>
@@ -353,7 +353,7 @@ export default function Navbar() {
       {/* Mobile Menu */}
       <div className={`mobile-menu-overlay ${isMobileMenuOpen ? "active" : ""}`}>
         <div className="mobile-menu-content">
-          {["HOME", "ABOUT", "DOMAINS", "SCHEDULE", "PRIZES", "SPONSORS", "FAQS"].map((item) => (
+          {["HOME", "ABOUT", "TRACKS", "SCHEDULE", "PRIZES", "SPONSORS", "FAQS"].map((item) => (
             <button
               key={item}
               className="mobile-menu-button"
