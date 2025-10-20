@@ -2,7 +2,7 @@ import React from 'react';
 
 type StarBorderProps<T extends React.ElementType> = Omit<
   React.ComponentPropsWithoutRef<T>,
-  'as'
+  'as' | 'style' // Omit style here for destructuring purpose
 > & {
   as?: T;
   className?: string;
@@ -19,14 +19,14 @@ const StarBorder = <T extends React.ElementType = 'button'>({
   color = 'white',
   speed = '5s',
   thickness = 3,
-  textSpeed, // destructured to prevent forwarding
+  textSpeed, // destructured to prevent forwarding to DOM
   children,
   ...rest
 }: StarBorderProps<T>) => {
   const Component = as || 'button';
 
-  // Separate style so we don't lose user's inline styles
-  const { style: restStyle, ...domProps } = (rest as any) || {};
+  // Properly type rest and destructure style
+  const { style: restStyle, ...domProps } = rest;
 
   return (
     <>

@@ -44,7 +44,7 @@ export function FaqsSection() {
             background: 'none',
           }}
         >
-          FAQ'S
+          FAQ&apos;S
         </h1>
         
         <div className="backdrop-blur-sm bg-black/20 rounded-xl p-6 border border-blue-500/20 shadow-lg shadow-blue-500/5">

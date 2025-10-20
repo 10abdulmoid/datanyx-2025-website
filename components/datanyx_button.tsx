@@ -13,7 +13,6 @@ export default function Datanyx2k24(){
       color="white"
       speed="6s"
       className="cursor-pointer mx-auto"
-      style={{ textDecoration: "none" }}
     >
       DATANYX 2k24
     </StarBorder>
