@@ -294,7 +294,6 @@ export function HeroSection() {
             color="white"
             speed="6s"
             className="cursor-pointer mx-auto"
-            style={{ textDecoration: "none" }}
           >
             REGISTER NOW!
           </StarBorder>
