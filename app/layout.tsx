@@ -157,22 +157,22 @@ export default function RootLayout({
         <link rel="icon" type="image/png" href="/favicon.png" sizes="32x32" />
       </head>
       <body className="relative">
+        <Background />
+        <SmoothCursor
+          size={17}
+          color="black"
+          showTrail={false}
+          trailLength={8}
+          magneticDistance={60}
+          magneticElements="[data-magnetic]"
+          springConfig={{
+            damping: 50,
+            stiffness: 450,
+            mass: 0.8,
+            restDelta: 0.001,
+          }}
+        />
         <ReactLenis root>
-          <Background />
-          <SmoothCursor
-            size={17}
-            color="black"
-            showTrail={false}
-            trailLength={8}
-            magneticDistance={60}
-            magneticElements="[data-magnetic]"
-            springConfig={{
-              damping: 50,
-              stiffness: 450,
-              mass: 0.8,
-              restDelta: 0.001,
-            }}
-          />
           {children}
         </ReactLenis>
       </body>
