@@ -15,7 +15,7 @@ export default function Datanyx2k24(){
       className="cursor-pointer mx-auto"
       style={{ textDecoration: "none" }}
     >
-      DATANYX'24
+      DATANYX 2k24
     </StarBorder>
     </>
     );
