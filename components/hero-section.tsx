@@ -229,11 +229,15 @@ export function HeroSection() {
       >
         <div className="flex flex-col items-center gap-2 md:gap-3" style={{ pointerEvents: 'none' }}>
           {/* Logo */}
-          <img
+          <Image
             src="/assets/datanyx25logo.png"
             alt="DATANYX Logo"
+            width={1000}
+            height={400}
             className="logo-image"
             style={{ pointerEvents: 'none' }}
+            priority
+            quality={90}
           />
 
           {/* Countdown */}

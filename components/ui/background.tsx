@@ -1,8 +1,15 @@
 "use client";
 
-import Particles from "@/components/ui/Particles";
+import dynamic from "next/dynamic";
+import { memo } from "react";
 
-const Background = () => {
+// Lazy load Particles component with loading fallback
+const Particles = dynamic(() => import("@/components/ui/Particles"), {
+  ssr: false,
+  loading: () => <div className="fixed top-0 left-0 w-full h-full z-10 bg-black" />,
+});
+
+const Background = memo(() => {
   return (
     <div className="fixed top-0 left-0 w-full h-full z-10">
       <Particles
@@ -17,6 +24,8 @@ const Background = () => {
       />
     </div>
   );
-};
+});
+
+Background.displayName = "Background";
 
 export default Background;

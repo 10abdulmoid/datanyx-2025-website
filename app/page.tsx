@@ -105,8 +105,8 @@ export default function Page() {
           <Footer />
         </div>
 
-        {/* Chat Interface */}
-        <ChatInterface />
+        {/* Chat Interface - Lazy loaded */}
+        {ready && <ChatInterface />}
       </main>
     </>
   );

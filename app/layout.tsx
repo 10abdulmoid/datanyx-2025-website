@@ -4,6 +4,14 @@ import './globals.css'
 import {ReactLenis} from "@/utils/lenis"
 import { SmoothCursor } from "@/components/ui/cursor";
 
+// Move themeColor to viewport export to fix Next.js warning
+export const viewport = {
+  themeColor: "#1E3A8A",
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+}
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.datanyx.in"),
   applicationName: "Datanyx 2.0",
@@ -36,7 +44,6 @@ export const metadata: Metadata = {
   creator: "IEEE SMC MJCET & AWS Cloud Club MJCET",
   publisher: "IEEE SMC MJCET",
   referrer: "origin-when-cross-origin",
-  themeColor: "#1E3A8A",
   formatDetection: { email: true, address: true, telephone: true },
   category: "Technology",
   robots: {
@@ -122,11 +129,8 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className="dark" suppressHydrationWarning>
-      <ReactLenis root>
       <head>
-
         <style
-          
           dangerouslySetInnerHTML={{
             __html: `
               /* Black background immediately */
@@ -142,7 +146,7 @@ export default function RootLayout({
             `,
           }}
         />
-       <script
+        <script
           dangerouslySetInnerHTML={{
             __html: `
               // Mark as mounted ASAP (runs before React hydration)
@@ -153,24 +157,25 @@ export default function RootLayout({
         <link rel="icon" type="image/png" href="/favicon.png" sizes="32x32" />
       </head>
       <body className="relative">
-        <Background />
-         <SmoothCursor
-          size={17}
-          color="black"
-          showTrail={false}
-          trailLength={8}
-          magneticDistance={60}
-          magneticElements="[data-magnetic]"
-          springConfig={{
-          damping: 50,
-          stiffness: 450,
-          mass: 0.8,
-          restDelta: 0.001
-          }}
-        />
-        {children}
+        <ReactLenis root>
+          <Background />
+          <SmoothCursor
+            size={17}
+            color="black"
+            showTrail={false}
+            trailLength={8}
+            magneticDistance={60}
+            magneticElements="[data-magnetic]"
+            springConfig={{
+              damping: 50,
+              stiffness: 450,
+              mass: 0.8,
+              restDelta: 0.001,
+            }}
+          />
+          {children}
+        </ReactLenis>
       </body>
-      </ReactLenis>
     </html>
   )
 }

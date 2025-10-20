@@ -1,15 +1,18 @@
 'use client'
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState, memo } from 'react'
+import Image from 'next/image'
 
-export default function FullscreenPreloader({
-  src = "/assets/datanyx25logo.png",
-  durationMs = 2800,
-  onDone,
-}: {
+interface FullscreenPreloaderProps {
   src?: string
   durationMs?: number
   onDone: () => void
-}) {
+}
+
+const FullscreenPreloader = memo(function FullscreenPreloader({
+  src = "/assets/datanyx25logo.png",
+  durationMs = 2800,
+  onDone,
+}: FullscreenPreloaderProps) {
   const [pct, setPct] = useState(0)
   const [phase, setPhase] = useState<'loading' | 'fading'>('loading')
   const rafRef = useRef<number | null>(null)
@@ -57,10 +60,11 @@ export default function FullscreenPreloader({
           }
         }
         
-        .logo {
+        .logo-wrapper {
           width: clamp(200px, 50vw, 600px);
           height: auto;
           animation: fadeInScale 800ms ease-out;
+          position: relative;
         }
         
         .progress-container {
@@ -68,7 +72,17 @@ export default function FullscreenPreloader({
         }
       `}</style>
 
-      <img src={src} alt="Logo" className="logo mb-16" />
+      <div className="logo-wrapper mb-16">
+        <Image
+          src={src}
+          alt="Datanyx Logo"
+          width={600}
+          height={240}
+          priority
+          quality={90}
+          style={{ width: '100%', height: 'auto' }}
+        />
+      </div>
 
       <div className="progress-container w-[min(400px,80vw)]">
         <div className="h-0.5 bg-zinc-800 rounded-full overflow-hidden">
@@ -83,4 +97,6 @@ export default function FullscreenPreloader({
       </div>
     </div>
   )
-}
+})
+
+export default FullscreenPreloader
