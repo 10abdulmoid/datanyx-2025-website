@@ -11,9 +11,8 @@ import SponsorsSection from "../components/sections/sponsors/sponsors-section";
 import FaqsSection from "@/components/sections/faqs/faqs-section";
 import Organizers from "@/components/sections/organizers/organizers";
 import Footer from "../components/footer";
-import FullscreenPreloader from "@/components/ui/PreLoader";
-import StarBorder from "@/components/ui/StarBorder_button";
 import ChatInterface from "../components/ChatInterface";
+import Datanyx2k24 from "@/components/datanyx_button";
 
 export default function Page() {
   const [scrollY, setScrollY] = useState(0);
@@ -55,14 +54,6 @@ export default function Page() {
 
   return (
     <>
-      {!ready && (
-        <FullscreenPreloader
-          src="/assets/datanyx25logo.png"
-          durationMs={2800}
-          onDone={handlePreloaderDone}
-        />
-      )}
-
       <main
         className="min-h-dvh scroll-smooth dark"
         style={{
@@ -84,6 +75,9 @@ export default function Page() {
         >
           <div className="absolute inset-0 -z-10 pointer-events-none" />
           <AboutSection />
+          <div className="flex align-middle justify-center">
+          <Datanyx2k24/>
+          </div>
           <DomainsSection />
           <ScheduleSection />
           <PrizesSection />

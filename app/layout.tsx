@@ -3,6 +3,7 @@ import Background from '@/components/ui/background'
 import './globals.css'
 import {ReactLenis} from "@/utils/lenis"
 import { SmoothCursor } from "@/components/ui/cursor";
+import ClientWrapper from "@/components/ClientWrapper";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.datanyx.in"),
@@ -168,7 +169,8 @@ export default function RootLayout({
           restDelta: 0.001
           }}
         />
-        {children}
+
+        <ClientWrapper>{children}</ClientWrapper>
       </body>
       </ReactLenis>
     </html>
