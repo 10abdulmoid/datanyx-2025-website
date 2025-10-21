@@ -5,16 +5,16 @@ const SPONSORS = [
     tier: "Platinum Sponsor",
   },
 
-  {
-    name: "Devfolio",
-    src: "/devfolio.png",
-    tier: "Gold Sponsor",
-  },
-  {
-    name: "ETHIndia",
-    src: "/ethindia.png",
-    tier: "Silver Sponsor",
-  },
+  // {
+  //   name: "Devfolio",
+  //   src: "/devfolio.png",
+  //   tier: "Gold Sponsor",
+  // },
+  // {
+  //   name: "ETHIndia",
+  //   src: "/ethindia.png",
+  //   tier: "Silver Sponsor",
+  // },
 ];
 
 export function SponsorsSection() {
