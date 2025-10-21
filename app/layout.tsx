@@ -1,8 +1,9 @@
-import type { Metadata } from 'next'
-import Background from '@/components/ui/background'
-import './globals.css'
-import {ReactLenis} from "@/utils/lenis"
+import type { Metadata } from "next";
+import Background from "@/components/ui/background";
+import "./globals.css";
+import { ReactLenis } from "@/utils/lenis";
 import { SmoothCursor } from "@/components/ui/cursor";
+import { poppins } from "@/lib/fonts";
 
 // Move themeColor to viewport export to fix Next.js warning
 export const viewport = {
@@ -10,7 +11,7 @@ export const viewport = {
   width: "device-width",
   initialScale: 1,
   maximumScale: 5,
-}
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.datanyx.in"),
@@ -107,11 +108,19 @@ export const metadata: Metadata = {
       { url: "/assets/favicon-16x16.png", sizes: "16x16", type: "image/png" },
     ],
     apple: [
-      { url: "/assets/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+      {
+        url: "/assets/apple-touch-icon.png",
+        sizes: "180x180",
+        type: "image/png",
+      },
     ],
     shortcut: ["/assets/favicon.png"],
     other: [
-      { rel: "mask-icon", url: "/assets/safari-pinned-tab.svg", color: "#1E3A8A" },
+      {
+        rel: "mask-icon",
+        url: "/assets/safari-pinned-tab.svg",
+        color: "#1E3A8A",
+      },
     ],
   },
   manifest: "/site.webmanifest",
@@ -156,7 +165,7 @@ export default function RootLayout({
         />
         <link rel="icon" type="image/png" href="/favicon.png" sizes="32x32" />
       </head>
-      <body className="relative">
+      <body className={`relative ${poppins.className}`}>
         <Background />
         <SmoothCursor
           size={17}
@@ -172,10 +181,8 @@ export default function RootLayout({
             restDelta: 0.001,
           }}
         />
-        <ReactLenis root>
-          {children}
-        </ReactLenis>
+        <ReactLenis root>{children}</ReactLenis>
       </body>
     </html>
-  )
+  );
 }
