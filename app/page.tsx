@@ -4,7 +4,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import HeroSection from "../components/hero-section";
 import Navbar from "../components/navbar";
 import AboutSection from "../components/sections/about/about-section";
-import DomainsSection from "../components/sections/tracks/domains-section";
+import DomainsSection from "../components/sections/tracks/tracks-section";
 import ScheduleSection from "../components/sections/timeline/schedule-section";
 import PrizesSection from "@/components/sections/prizes/prizes-section";
 import SponsorsSection from "../components/sections/sponsors/sponsors-section";
