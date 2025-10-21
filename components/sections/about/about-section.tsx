@@ -112,8 +112,8 @@ export function AboutSection() {
     { label: "Participants", value: "300+" },
     { label: "Hours", value: "24" },
     { label: "Projects", value: "100+" },
-    { label: "Prize pool", value: "₹100,000+" }, // explicitly 100k with Indian grouping after animate
-    { label: "Venue", value: "Ghulam Ahmed Hall, MJCET" },
+    { label: "Prize pool", value: "₹1,00,000+" },
+    { label: "Venue", value: "Muffakham Jah College of Engineering and Technology" },
     { label: "Mode", value: "OFFLINE" },
   ];
 

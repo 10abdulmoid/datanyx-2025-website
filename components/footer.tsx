@@ -101,11 +101,11 @@ export function Footer() {
             >
               Contact
             </h4>
-            <div
+            <div  
               className="space-y-3 text-gray-400"
               style={{ fontFamily: "Poppins, sans-serif" }}
             >
-              <div>datanyx2k24@gmail.com</div>
+              <div>datanyx2k25@gmail.com</div>
               <div>
                 <p>Vahaj: +91 8897022603</p>
                 <p>Nameera: +91 8125134015</p>
@@ -155,7 +155,7 @@ export function Footer() {
             className="glow-text text-lg font-bold tracking-wide"
             style={{ fontFamily: "Poppins, sans-serif" }}
           >
-            DATANYX'25 WEB TEAM :
+            DATANYX'25 WEB TEAM:
           </span>
 
           <div
