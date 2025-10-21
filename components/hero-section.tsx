@@ -288,7 +288,7 @@ export function HeroSection() {
 
           <StarBorder
             as="a"
-            href="https://unstop.com/hackathons/datanyx-muffakham-jah-college-of-engineering-technology-1188761"
+            href="https://unstop.com/p/datanyx25-muffakham-jah-college-of-engineering-and-technology-mjcet-hyderabad-1572132?utm_medium=Share&utm_source=awsclu81728&utm_campaign=Online_coding_challenge"
             target="_blank"
             rel="noopener noreferrer"
             color="white"
