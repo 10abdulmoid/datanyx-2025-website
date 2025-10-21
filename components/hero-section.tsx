@@ -1,41 +1,40 @@
-'use client'
+"use client";
 
-import Link from 'next/link'
-import Image from 'next/image'
-import { useEffect, useMemo, useState, useRef } from 'react'
-import StarBorder from '@/components/ui/StarBorder_button'
+import Link from "next/link";
+import Image from "next/image";
+import { useEffect, useMemo, useState, useRef } from "react";
+import StarBorder from "@/components/ui/StarBorder_button";
 // import WireframeSphere from './three/wireframe-sphere'
-  import { Poppins } from "next/font/google";
+import { Poppins } from "next/font/google";
 import DevfolioButton from "@/components/DevfolioButton";
 
-
-  const poppins = Poppins({
-    subsets: ["latin"],
-    weight: ["600"], // choose your weight
-  });
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ["600"], // choose your weight
+});
 
 function useCountdown(targetISO: string) {
-  const target = useMemo(() => new Date(targetISO).getTime(), [targetISO])
-  const [remaining, setRemaining] = useState(0)
-  const [isClient, setIsClient] = useState(false)
+  const target = useMemo(() => new Date(targetISO).getTime(), [targetISO]);
+  const [remaining, setRemaining] = useState(0);
+  const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
-    setIsClient(true)
-    setRemaining(target - Date.now())
-    const id = setInterval(() => setRemaining(target - Date.now()), 1000)
-    return () => clearInterval(id)
-  }, [target])
+    setIsClient(true);
+    setRemaining(target - Date.now());
+    const id = setInterval(() => setRemaining(target - Date.now()), 1000);
+    return () => clearInterval(id);
+  }, [target]);
 
-  const clamp = Math.max(0, remaining)
-  const d = Math.floor(clamp / (1000 * 60 * 60 * 24))
-  const h = Math.floor((clamp / (1000 * 60 * 60)) % 24)
-  const m = Math.floor((clamp / (1000 * 60)) % 60)
-  const s = Math.floor((clamp / 1000) % 60)
-  return { d, h, m, s, done: clamp <= 0, isClient }
+  const clamp = Math.max(0, remaining);
+  const d = Math.floor(clamp / (1000 * 60 * 60 * 24));
+  const h = Math.floor((clamp / (1000 * 60 * 60)) % 24);
+  const m = Math.floor((clamp / (1000 * 60)) % 60);
+  const s = Math.floor((clamp / 1000) % 60);
+  return { d, h, m, s, done: clamp <= 0, isClient };
 }
 
 function TimeBlock({ label, value }: { label: string; value: number }) {
-  const v = String(value).padStart(2, '0')
+  const v = String(value).padStart(2, "0");
   return (
     <div className="grid grid-cols-1 text-center">
       <span className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-foreground tabular-nums">
@@ -45,88 +44,93 @@ function TimeBlock({ label, value }: { label: string; value: number }) {
         {label}
       </span>
     </div>
-  )
+  );
 }
 
 export function HeroSection() {
   // Load Devfolio SDK for the Apply button
   useEffect(() => {
-    const script = document.createElement('script');
-    script.src = 'https://apply.devfolio.co/v2/sdk.js';
+    const script = document.createElement("script");
+    script.src = "https://apply.devfolio.co/v2/sdk.js";
     script.async = true;
     script.defer = true;
     document.body.appendChild(script);
     return () => {
       document.body.removeChild(script);
-    }
+    };
   }, []);
   //  Countdown to registration deadline: November 14, 2025, 11:59 PM IST (18:29:59 UTC)
-  const { d, h, m, s, done, isClient } = useCountdown('2025-11-14T18:29:59Z')
+  const { d, h, m, s, done, isClient } = useCountdown("2025-11-14T18:29:59Z");
 
-  const sphereRef = useRef<HTMLDivElement>(null)
-  const contentRef = useRef<HTMLDivElement>(null)
-  const bottomRef = useRef<HTMLDivElement>(null)
+  const sphereRef = useRef<HTMLDivElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
+  const bottomRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    let rafId = 0 as number
-    let currentScrollY = window.scrollY
-    let targetScrollY = window.scrollY
+    let rafId = 0 as number;
+    let currentScrollY = window.scrollY;
+    let targetScrollY = window.scrollY;
 
     const lerp = (start: number, end: number, factor: number) =>
-      start + (end - start) * factor
+      start + (end - start) * factor;
 
     const updateScroll = () => {
-      currentScrollY = lerp(currentScrollY, targetScrollY, 0.1)
-      const halfViewportHeight = window.innerHeight / 2
-      const scrollProgress = Math.min(currentScrollY / halfViewportHeight, 1)
-      const easeOutQuart = (t: number) => 1 - Math.pow(1 - t, 4)
-      const smoothProgress = easeOutQuart(scrollProgress)
-      const sphereTransformY = smoothProgress * -100
-      const sphereOpacity = 1 - smoothProgress
+      currentScrollY = lerp(currentScrollY, targetScrollY, 0.1);
+      const halfViewportHeight = window.innerHeight / 2;
+      const scrollProgress = Math.min(currentScrollY / halfViewportHeight, 1);
+      const easeOutQuart = (t: number) => 1 - Math.pow(1 - t, 4);
+      const smoothProgress = easeOutQuart(scrollProgress);
+      const sphereTransformY = smoothProgress * -100;
+      const sphereOpacity = 1 - smoothProgress;
 
       if (sphereRef.current) {
-        sphereRef.current.style.transform = `translate3d(0, ${sphereTransformY}vh, 0)`
-        sphereRef.current.style.opacity = String(sphereOpacity)
+        sphereRef.current.style.transform = `translate3d(0, ${sphereTransformY}vh, 0)`;
+        sphereRef.current.style.opacity = String(sphereOpacity);
       }
 
       if (contentRef.current) {
-        contentRef.current.style.transform = `translate3d(-50%, calc(-50% + ${sphereTransformY}vh), 0)`
-        contentRef.current.style.opacity = String(sphereOpacity)
+        contentRef.current.style.transform = `translate3d(-50%, calc(-50% + ${sphereTransformY}vh), 0)`;
+        contentRef.current.style.opacity = String(sphereOpacity);
       }
 
       if (bottomRef.current) {
-        if (scrollProgress > 0) bottomRef.current.style.visibility = 'visible'
-        bottomRef.current.style.opacity = String(smoothProgress)
-        bottomRef.current.style.transform = `translate3d(0, ${(1 - smoothProgress) * 20}px, 0)`
+        if (scrollProgress > 0) bottomRef.current.style.visibility = "visible";
+        bottomRef.current.style.opacity = String(smoothProgress);
+        bottomRef.current.style.transform = `translate3d(0, ${
+          (1 - smoothProgress) * 20
+        }px, 0)`;
       }
 
-      if (Math.abs(targetScrollY - currentScrollY) > 0.1 || scrollProgress < 1) {
-        rafId = requestAnimationFrame(updateScroll)
+      if (
+        Math.abs(targetScrollY - currentScrollY) > 0.1 ||
+        scrollProgress < 1
+      ) {
+        rafId = requestAnimationFrame(updateScroll);
       } else {
-        rafId = 0
+        rafId = 0;
       }
-    }
+    };
 
     const handleScroll = () => {
-      targetScrollY = window.scrollY
-      if (!rafId) rafId = requestAnimationFrame(updateScroll)
-    }
+      targetScrollY = window.scrollY;
+      if (!rafId) rafId = requestAnimationFrame(updateScroll);
+    };
 
-    rafId = requestAnimationFrame(updateScroll)
-    window.addEventListener('scroll', handleScroll, { passive: true })
+    rafId = requestAnimationFrame(updateScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
 
     return () => {
-      window.removeEventListener('scroll', handleScroll)
-      if (rafId) cancelAnimationFrame(rafId)
-    }
-  }, [])
+      window.removeEventListener("scroll", handleScroll);
+      if (rafId) cancelAnimationFrame(rafId);
+    };
+  }, []);
 
   return (
     <section
       id="home"
       aria-labelledby="datanyx-hero-title"
       className="relative w-full py-24 md:py-36 min-h-screen"
-      style={{ overflow: 'visible' }}
+      style={{ overflow: "visible" }}
     >
       <style jsx>{`
         .logo-image {
@@ -196,17 +200,17 @@ export function HeroSection() {
       <div
         ref={sphereRef}
         style={{
-          position: 'fixed',
+          position: "fixed",
           top: 0,
           left: 0,
-          width: '100vw',
-          height: '100vh',
+          width: "100vw",
+          height: "100vh",
           zIndex: 2,
-          transform: 'translate3d(0, 0, 0)',
+          transform: "translate3d(0, 0, 0)",
           opacity: 1,
-          willChange: 'transform, opacity',
-          backfaceVisibility: 'hidden',
-          pointerEvents: 'none',
+          willChange: "transform, opacity",
+          backfaceVisibility: "hidden",
+          pointerEvents: "none",
         }}
       >
         {/* <WireframeSphere /> */}
@@ -218,16 +222,19 @@ export function HeroSection() {
         className="fixed hero-content"
         style={{
           zIndex: 600,
-          top: '52%',
-          left: '50%',
-          transform: 'translate3d(-50%, -50%, 0)',
+          top: "52%",
+          left: "50%",
+          transform: "translate3d(-50%, -50%, 0)",
           opacity: 1,
-          willChange: 'transform, opacity',
-          backfaceVisibility: 'hidden',
-          pointerEvents: 'none',
+          willChange: "transform, opacity",
+          backfaceVisibility: "hidden",
+          pointerEvents: "none",
         }}
       >
-        <div className="flex flex-col items-center gap-2 md:gap-3" style={{ pointerEvents: 'none' }}>
+        <div
+          className="flex flex-col items-center gap-2 md:gap-3"
+          style={{ pointerEvents: "none" }}
+        >
           {/* Logo */}
           <Image
             src="/assets/datanyx25logo.png"
@@ -235,16 +242,21 @@ export function HeroSection() {
             width={1000}
             height={400}
             className="logo-image"
-            style={{ pointerEvents: 'none' }}
+            style={{ pointerEvents: "none" }}
             priority
             quality={90}
           />
 
           {/* Countdown */}
-          <div className="flex flex-col items-center gap-1" style={{ pointerEvents: 'none' }}>
+          <div
+            className="flex flex-col items-center gap-1"
+            style={{ pointerEvents: "none" }}
+          >
             {!done && (
-              <p className="text-[10px] sm:text-xs md:text-sm font-medium text-muted-foreground uppercase tracking-wide"
-              style={{ fontFamily: 'Orbitron, monospace' }}>
+              <p
+                className="text-[10px] sm:text-xs md:text-sm font-medium text-muted-foreground uppercase tracking-wide"
+                style={{ fontFamily: "Poppins, sans-serif" }}
+              >
                 Time left to register
               </p>
             )}
@@ -252,7 +264,9 @@ export function HeroSection() {
             <div
               aria-label="Registration countdown"
               className="inline-flex items-center justify-center gap-3 sm:gap-3 rounded-xl border border-border/60 bg-background/60 px-4 sm:px-5 md:px-6 py-2.5 sm:py-3.5 backdrop-blur"
-              style={{ filter: 'drop-shadow(0 0 10px rgba(255, 255, 255, 0.2))' }}
+              style={{
+                filter: "drop-shadow(0 0 10px rgba(255, 255, 255, 0.2))",
+              }}
             >
               {!isClient ? (
                 <span className="text-sm sm:text-base md:text-lg text-foreground font-medium">
@@ -265,11 +279,26 @@ export function HeroSection() {
               ) : (
                 <>
                   <TimeBlock label="Days" value={d} />
-                  <span aria-hidden="true" className="text-lg sm:text-xl md:text-2xl text-muted-foreground">:</span>
+                  <span
+                    aria-hidden="true"
+                    className="text-lg sm:text-xl md:text-2xl text-muted-foreground"
+                  >
+                    :
+                  </span>
                   <TimeBlock label="Hours" value={h} />
-                  <span aria-hidden="true" className="text-lg sm:text-xl md:text-2xl text-muted-foreground">:</span>
+                  <span
+                    aria-hidden="true"
+                    className="text-lg sm:text-xl md:text-2xl text-muted-foreground"
+                  >
+                    :
+                  </span>
                   <TimeBlock label="Minutes" value={m} />
-                  <span aria-hidden="true" className="text-lg sm:text-xl md:text-2xl text-muted-foreground">:</span>
+                  <span
+                    aria-hidden="true"
+                    className="text-lg sm:text-xl md:text-2xl text-muted-foreground"
+                  >
+                    :
+                  </span>
                   <TimeBlock label="Seconds" value={s} />
                 </>
               )}
@@ -277,10 +306,13 @@ export function HeroSection() {
           </div>
 
           {/* Apply with Devfolio Button */}
-          <DevfolioButton slug="datanyx-2025" theme="dark" width="280px" height="50px" />
-          <p className="text-sm text-gray-400 mt-4">
-            Powered by Devfolio
-          </p>
+          <DevfolioButton
+            slug="datanyx-2025"
+            theme="dark"
+            width="280px"
+            height="50px"
+          />
+          <p className="text-sm text-gray-400 mt-4">Powered by Devfolio</p>
           {/* {!done && (
         <div
           className="w-full flex justify-center mt-2 sm:mt-3"
@@ -331,15 +363,15 @@ export function HeroSection() {
         ref={bottomRef}
         className="container mx-auto px-4 text-center"
         style={{
-          position: 'relative',
+          position: "relative",
           zIndex: 20,
-          willChange: 'transform, opacity',
-          backfaceVisibility: 'hidden',
-          visibility: 'hidden',
+          willChange: "transform, opacity",
+          backfaceVisibility: "hidden",
+          visibility: "hidden",
         }}
       />
     </section>
-  )
+  );
 }
 
-export default HeroSection
+export default HeroSection;
