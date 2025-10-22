@@ -2,10 +2,10 @@ import { Poppins } from "next/font/google";
 import { Orbitron } from "next/font/google";
 
 export const poppins = Poppins({
-  weight: "300",
-  subsets: ["latin"],
-  style: "normal",
-});
+  subsets: ['latin'],
+  weight: ['400', '700'],
+  style: 'normal',
+})
 
 export const orbitron = Orbitron({
   weight: "400",

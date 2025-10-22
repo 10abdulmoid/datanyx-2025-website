@@ -113,7 +113,10 @@ export function AboutSection() {
     { label: "Hours", value: "24" },
     { label: "Projects", value: "100+" },
     { label: "Prize pool", value: "₹1,00,000+" },
-    { label: "Venue", value: "Muffakham Jah College of Engineering and Technology" },
+    {
+      label: "Venue",
+      value: "Muffakham Jah College of Engineering and Technology",
+    },
     { label: "Mode", value: "OFFLINE" },
   ];
 
@@ -141,10 +144,10 @@ export function AboutSection() {
         ></div>
       </div>
 
-      <div className="container mx-auto px-4 relative z-10">
+      <div className="container mx-auto px-4 relative z-10 ">
         <h1
           className={
-            "text-center text-white font-black tracking-wide mb-8 sm:mb-10"
+            "text-center text-white font-black tracking-wide mb-8 sm:mb-10 bold"
           }
           style={{
             fontSize: "clamp(2rem, 4vw, 3rem)",

@@ -79,7 +79,7 @@ export function FaqsSection() {
 
       <div className="container mx-auto px-4 relative z-10">
         <h1
-          className="text-center text-white font-black tracking-wide mb-8 sm:mb-10"
+          className="text-center text-white font-black tracking-wide mb-8 sm:mb-10 bold"
           style={{
             fontFamily: "Poppins, sans-serif",
             fontSize: "clamp(2rem, 4vw, 3rem)",

@@ -101,7 +101,7 @@ export function Footer() {
             >
               Contact
             </h4>
-            <div  
+            <div
               className="space-y-3 text-gray-400"
               style={{ fontFamily: "Poppins, sans-serif" }}
             >

@@ -337,7 +337,7 @@ export default function Navbar() {
           </div>
 
           {/* Desktop Menu with Sliding Tabs */}
-          <div className="navbar-menu">
+          <div className="navbar-menu bold">
             <SlideTabs
               items={[
                 "HOME",
@@ -354,7 +354,7 @@ export default function Navbar() {
 
           {/* Mobile Menu Button */}
           <button
-            className={`hamburger-button ${isMobileMenuOpen ? "active" : ""}`}
+            className={`hamburger-button ${isMobileMenuOpen ? "active" : ""} `}
             onClick={toggleMobileMenu}
             aria-label="Toggle menu"
           >
@@ -369,7 +369,7 @@ export default function Navbar() {
       <div
         className={`mobile-menu-overlay ${isMobileMenuOpen ? "active" : ""}`}
       >
-        <div className="mobile-menu-content">
+        <div className="mobile-menu-content bold">
           {[
             "HOME",
             "ABOUT",

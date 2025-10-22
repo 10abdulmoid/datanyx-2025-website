@@ -12,6 +12,10 @@
   }
 }
 
+.bold {
+  font-weight: 700;
+}
+
 /* Prevent horizontal scroll on all pages */
 html,
 body {
