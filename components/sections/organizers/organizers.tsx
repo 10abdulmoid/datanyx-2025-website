@@ -1,37 +1,40 @@
-'use client'
+"use client";
 
-import Image from 'next/image'
-import React from 'react'
-import { FaLinkedin, FaInstagram } from 'react-icons/fa'
+import Image from "next/image";
+import React from "react";
+import { FaLinkedin, FaInstagram } from "react-icons/fa";
 
 type Organizer = {
-  name: string
-  image: string
+  name: string;
+  image: string;
   socials?: {
-    linkedin?: string
-    instagram?: string
-  }
-}
+    linkedin?: string;
+    instagram?: string;
+  };
+};
 
 const organizers: Organizer[] = [
   {
-    name: 'IEEE SMC',
-    image: '/assets/smc-logo.png',
+    name: "IEEE SMC",
+    image: "/assets/smc-logo.png",
     socials: {
-      linkedin: 'https://www.linkedin.com/company/ieeesmcmjcet/posts/?feedView=all',
-      instagram: ' https://www.instagram.com/ieeesmcmjcet?utm_source=ig_web_button_share_sheet&igsh=NzRncGoxZHJhcndn',
-
+      linkedin:
+        "https://www.linkedin.com/company/ieeesmcmjcet/posts/?feedView=all",
+      instagram:
+        " https://www.instagram.com/ieeesmcmjcet?utm_source=ig_web_button_share_sheet&igsh=NzRncGoxZHJhcndn",
     },
   },
   {
-    name: 'AWS Club',
-    image: '/assets/aws_logo.png',
+    name: "AWS Club",
+    image: "/assets/aws_logo.png",
     socials: {
-      linkedin: 'https://www.linkedin.com/company/aws-cloud-club-mjcet/posts/?feedView=all',
-      instagram: ' https://www.instagram.com/awsclub.mjcet?utm_source=ig_web_button_share_sheet&igsh=MWhmZ2FlbTJkYXRrYw==',
+      linkedin:
+        "https://www.linkedin.com/company/aws-cloud-club-mjcet/posts/?feedView=all",
+      instagram:
+        " https://www.instagram.com/awsclub.mjcet?utm_source=ig_web_button_share_sheet&igsh=MWhmZ2FlbTJkYXRrYw==",
     },
   },
-]
+];
 
 function OrganizerCard({ org }: { org: Organizer }) {
   return (
@@ -59,7 +62,7 @@ function OrganizerCard({ org }: { org: Organizer }) {
         {/* Name */}
         <p
           className="mt-4 text-center text-white/90 text-base sm:text-lg"
-          style={{ fontFamily: 'Orbitron, monospace' }}
+          style={{ fontFamily: "Poppins, sans-serif" }}
         >
           {org.name}
         </p>
@@ -95,7 +98,7 @@ function OrganizerCard({ org }: { org: Organizer }) {
         )}
       </div>
     </div>
-  )
+  );
 }
 
 export default function Organizers() {
@@ -103,15 +106,15 @@ export default function Organizers() {
     <section className="w-full">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10">
         <h1
-          className="text-center text-white font-black tracking-wide mb-8 sm:mb-10"
+          className="text-center text-white font-black tracking-wide mb-8 sm:mb-10 bold"
           style={{
-            fontFamily: 'Space Age, monospace',
-            fontSize: 'clamp(2rem, 4vw, 3rem)',
+            fontFamily: "Poppins, sans-serif",
+            fontSize: "clamp(2rem, 4vw, 3rem)",
             lineHeight: 1.1,
-            color: '#fff',
-            textShadow: 'none',
-            WebkitTextFillColor: 'initial',
-            background: 'none',
+            color: "#fff",
+            textShadow: "none",
+            WebkitTextFillColor: "initial",
+            background: "none",
           }}
         >
           ORGANIZERS
@@ -124,5 +127,5 @@ export default function Organizers() {
         </div>
       </div>
     </section>
-  )
+  );
 }

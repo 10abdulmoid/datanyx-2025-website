@@ -1,27 +1,37 @@
-import { EvervaultCard, Icon } from "../ui/evervault-card";
+import { EvervaultCard, Icon } from "@/components/ui/evervault-card";
 
 export function PrizesSection() {
   return (
-    <section id="prizes" aria-labelledby="prizes-title" className="scroll-mt-24 py-8 md:py-12 relative">
+    <section
+      id="prizes"
+      aria-labelledby="prizes-title"
+      className="scroll-mt-24 py-8 md:py-12 relative"
+    >
       {/* Space-themed background effect */}
       <div className="absolute inset-0 overflow-hidden opacity-20 pointer-events-none">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-yellow-500/20 via-transparent to-transparent" />
         <div className="absolute top-20 right-1/3 w-1 h-1 rounded-full bg-yellow-300 animate-ping" />
-        <div className="absolute top-60 left-1/4 w-1 h-1 rounded-full bg-amber-300 animate-ping" style={{ animationDelay: "0.8s" }} />
-        <div className="absolute bottom-20 right-1/2 w-1 h-1 rounded-full bg-orange-300 animate-ping" style={{ animationDelay: "1.3s" }} />
+        <div
+          className="absolute top-60 left-1/4 w-1 h-1 rounded-full bg-amber-300 animate-ping"
+          style={{ animationDelay: "0.8s" }}
+        />
+        <div
+          className="absolute bottom-20 right-1/2 w-1 h-1 rounded-full bg-orange-300 animate-ping"
+          style={{ animationDelay: "1.3s" }}
+        />
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
         <h1
           className="text-center text-white font-black tracking-wide mb-8 sm:mb-10"
           style={{
-            fontFamily: 'Space Age, monospace',
-            fontSize: 'clamp(2rem, 4vw, 3rem)',
+            fontFamily: "Poppins, sans-serif",
+            fontSize: "clamp(2rem, 4vw, 3rem)",
             lineHeight: 1.1,
-            color: '#fff',
-            textShadow: 'none',
-            WebkitTextFillColor: 'initial',
-            background: 'none',
+            color: "#fff",
+            textShadow: "none",
+            WebkitTextFillColor: "initial",
+            background: "none",
           }}
         >
           PRIZES PER TRACK
@@ -41,12 +51,10 @@ export function PrizesSection() {
 
                 {/* Text overlay inside the card */}
                 <div className="absolute bottom-6 left-0 right-0 text-center z-20">
-                  <h3 className="text-white text-xl font-bold mb-2" style={{ fontFamily: 'Orbitron, monospace' }}>
+                  <h3 className="text-white text-xl font-bold mb-2">
                     Grand Prize
                   </h3>
-                  <p className="text-lg font-bold text-yellow-400" style={{ fontFamily: 'Orbitron, monospace' }}>
-                    ₹15,000
-                  </p>
+                  <p className="text-lg font-bold text-yellow-400">₹15,000</p>
                 </div>
               </div>
             </div>
@@ -63,18 +71,16 @@ export function PrizesSection() {
 
                 {/* Text overlay inside the card */}
                 <div className="absolute bottom-6 left-0 right-0 text-center z-20">
-                  <h3 className="text-white text-xl font-bold mb-2" style={{ fontFamily: 'Orbitron, monospace' }}>
+                  <h3 className="text-white text-xl font-bold mb-2">
                     Runner Up
                   </h3>
-                  <p className="text-lg font-bold text-gray-300" style={{ fontFamily: 'Orbitron, monospace' }}>
-                    ₹10,000
-                  </p>
+                  <p className="text-lg font-bold text-gray-300">₹10,000</p>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div> 
+      </div>
     </section>
   );
 }

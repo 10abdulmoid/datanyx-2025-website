@@ -1,8 +1,9 @@
-@import 'tailwindcss';
-@import 'tw-animate-css';
+@import "tailwindcss";
+@import "tw-animate-css";
 
 @theme inline {
-  --animate-scroll: scroll var(--animation-duration, 40s) var(--animation-direction, forwards) linear infinite;
+  --animate-scroll: scroll var(--animation-duration, 40s)
+    var(--animation-direction, forwards) linear infinite;
 
   @keyframes scroll {
     to {
@@ -11,9 +12,13 @@
   }
 }
 
+.bold {
+  font-weight: 700;
+}
 
 /* Prevent horizontal scroll on all pages */
-html, body {
+html,
+body {
   max-width: 100%;
   overflow-x: hidden;
 }
@@ -21,22 +26,6 @@ html, body {
 /* Ensure all elements respect the viewport width */
 * {
   box-sizing: border-box;
-}
-
-@font-face {
-  font-family: 'Space Age';
-  src: url('/fonts/space age.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
-.font-space-age {
-  font-family: 'Space Age', sans-serif;
-}
-
-.font-orbitron{
-  font-family: 'Orbitron', monospace;
 }
 
 @custom-variant dark (&:is(.dark *));
@@ -170,7 +159,7 @@ html, body {
     opacity: 1 !important;
     visibility: visible !important;
   }
-  
+
   /* Prevent any loading overlays */
   body::before,
   body::after,
@@ -184,7 +173,7 @@ html, body {
     --animation-duration: 80s;
     --animation-direction: forwards;
   }
-  
+
   .animate-scroll {
     animation-direction: var(--animation-direction);
   }
@@ -198,20 +187,19 @@ html[data-mounted="true"] body > * {
   transition: opacity 200ms ease;
 }
 
-
 html.lenis,
-html.lenis body{
-  height : auto;
+html.lenis body {
+  height: auto;
 }
-.lenis.lenis-smooth{
+.lenis.lenis-smooth {
   scroll-behavior: auto !important;
 }
-.lenis.lenis-smooth[data-lenis-prevent]{
+.lenis.lenis-smooth[data-lenis-prevent] {
   overscroll-behavior: contain;
 }
-.lenis.lenis-stopped{
+.lenis.lenis-stopped {
   overflow: hidden;
 }
-.lenis.lenis-smooth iframe{
+.lenis.lenis-smooth iframe {
   pointer-events: none;
 }

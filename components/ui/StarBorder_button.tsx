@@ -1,8 +1,8 @@
-import React from 'react';
+import React from "react";
 
 type StarBorderProps<T extends React.ElementType> = Omit<
   React.ComponentPropsWithoutRef<T>,
-  'as'
+  "as"
 > & {
   as?: T;
   className?: string;
@@ -13,17 +13,17 @@ type StarBorderProps<T extends React.ElementType> = Omit<
   textSpeed?: string; // accepted but not forwarded to DOM
 };
 
-const StarBorder = <T extends React.ElementType = 'button'>({
+const StarBorder = <T extends React.ElementType = "button">({
   as,
-  className = '',
-  color = 'white',
-  speed = '5s',
+  className = "",
+  color = "white",
+  speed = "5s",
   thickness = 3,
   textSpeed, // destructured to prevent forwarding
   children,
   ...rest
 }: StarBorderProps<T>) => {
-  const Component = as || 'button';
+  const Component = as || "button";
 
   // Separate style so we don't lose user's inline styles
   const { style: restStyle, ...domProps } = (rest as any) || {};
@@ -31,17 +31,35 @@ const StarBorder = <T extends React.ElementType = 'button'>({
   return (
     <>
       <style jsx>{`
-        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap');
+        /* Using Poppins font from layout.tsx */
 
         @keyframes star-movement-bottom {
-          0% { transform: translateX(0%); opacity: 1; }
-          50% { transform: translateX(-100%); opacity: 0.7; }
-          100% { transform: translateX(0%); opacity: 1; }
+          0% {
+            transform: translateX(0%);
+            opacity: 1;
+          }
+          50% {
+            transform: translateX(-100%);
+            opacity: 0.7;
+          }
+          100% {
+            transform: translateX(0%);
+            opacity: 1;
+          }
         }
         @keyframes star-movement-top {
-          0% { transform: translateX(0%); opacity: 1; }
-          50% { transform: translateX(100%); opacity: 0.7; }
-          100% { transform: translateX(0%); opacity: 1; }
+          0% {
+            transform: translateX(0%);
+            opacity: 1;
+          }
+          50% {
+            transform: translateX(100%);
+            opacity: 0.7;
+          }
+          100% {
+            transform: translateX(0%);
+            opacity: 1;
+          }
         }
 
         .star-bottom {
@@ -65,7 +83,7 @@ const StarBorder = <T extends React.ElementType = 'button'>({
         {...domProps} // safe; no textSpeed leaks
         style={{
           padding: `${thickness}px`,
-          borderRadius: '12px',
+          borderRadius: "12px",
           ...(restStyle || {}),
         }}
       >
@@ -73,13 +91,13 @@ const StarBorder = <T extends React.ElementType = 'button'>({
         <div
           className="star-bottom"
           style={{
-            position: 'absolute',
-            width: '300%',
+            position: "absolute",
+            width: "300%",
             height: `${thickness * 8}px`,
             opacity: 0.8,
             bottom: `-${thickness * 2}px`,
-            right: '-250%',
-            borderRadius: '50%',
+            right: "-250%",
+            borderRadius: "50%",
             background: `radial-gradient(circle, ${color}, transparent 15%)`,
             zIndex: 0,
           }}
@@ -88,13 +106,13 @@ const StarBorder = <T extends React.ElementType = 'button'>({
         <div
           className="star-top"
           style={{
-            position: 'absolute',
-            width: '300%',
+            position: "absolute",
+            width: "300%",
             height: `${thickness * 8}px`,
             opacity: 0.8,
             top: `-${thickness * 2}px`,
-            left: '-250%',
-            borderRadius: '50%',
+            left: "-250%",
+            borderRadius: "50%",
             background: `radial-gradient(circle, ${color}, transparent 15%)`,
             zIndex: 0,
           }}
@@ -104,27 +122,27 @@ const StarBorder = <T extends React.ElementType = 'button'>({
         <div
           className="star-border-button"
           style={{
-            position: 'relative',
+            position: "relative",
             zIndex: 1,
-            background: 'linear-gradient(to bottom, #000000, #1a1a1a)',
-            border: '1px solid #333',
-            color: 'white',
-            borderRadius: '12px',
-            overflow: 'hidden',
-            minWidth: '200px',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            padding: '14px 20px',
+            background: "linear-gradient(to bottom, #000000, #1a1a1a)",
+            border: "1px solid #333",
+            color: "white",
+            borderRadius: "12px",
+            overflow: "hidden",
+            minWidth: "200px",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            padding: "14px 20px",
           }}
         >
           <span
             style={{
-              fontSize: '16px',
+              fontSize: "16px",
               fontWeight: 700,
-              textTransform: 'uppercase',
-              letterSpacing: '0.05em',
-              fontFamily: "'Orbitron', sans-serif",
+              textTransform: "uppercase",
+              letterSpacing: "0.05em",
+              fontFamily: "'Poppins', sans-serif",
             }}
           >
             {children}

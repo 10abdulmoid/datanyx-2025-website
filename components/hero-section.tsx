@@ -4,7 +4,6 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { useEffect, useMemo, useState, useRef } from 'react'
 import StarBorder from '@/components/ui/StarBorder_button'
-// import WireframeSphere from './three/wireframe-sphere'
   import { Poppins } from "next/font/google";
 import DevfolioButton from "@/components/DevfolioButton";
 
@@ -229,15 +228,11 @@ export function HeroSection() {
       >
         <div className="flex flex-col items-center gap-2 md:gap-3" style={{ pointerEvents: 'none' }}>
           {/* Logo */}
-          <Image
+          <img
             src="/assets/datanyx25logo.png"
             alt="DATANYX Logo"
-            width={1000}
-            height={400}
             className="logo-image"
             style={{ pointerEvents: 'none' }}
-            priority
-            quality={90}
           />
 
           {/* Countdown */}
@@ -277,11 +272,11 @@ export function HeroSection() {
           </div>
 
           {/* Apply with Devfolio Button */}
-          <DevfolioButton slug="datanyx-2025" theme="dark" width="280px" height="50px" />
+          {/* <DevfolioButton slug="datanyx-2025" theme="dark" width="280px" height="50px" />
           <p className="text-sm text-gray-400 mt-4">
             Powered by Devfolio
-          </p>
-          {/* {!done && (
+          </p> */}
+          {!done && (
         <div
           className="w-full flex justify-center mt-2 sm:mt-3"
           style={{
@@ -290,7 +285,20 @@ export function HeroSection() {
             zIndex: 9999,
           }}
         >
-          <Link
+
+          <StarBorder
+            as="a"
+            href="https://unstop.com/p/datanyx25-muffakham-jah-college-of-engineering-and-technology-mjcet-hyderabad-1572132?utm_medium=Share&utm_source=awsclu81728&utm_campaign=Online_coding_challenge"
+            target="_blank"
+            rel="noopener noreferrer"
+            color="white"
+            speed="6s"
+            className="cursor-pointer mx-auto"
+          >
+            REGISTER NOW!
+          </StarBorder>
+
+          {/* <Link
             href="https://devfolio.co/datanyx-2025"
             target="_blank"
             rel="noopener noreferrer"
@@ -321,9 +329,9 @@ export function HeroSection() {
               priority
             />
             <span style={{ whiteSpace: "nowrap" }}>Apply with Devfolio</span>
-          </Link>
+          </Link> */}
         </div>
-      )} */}
+      )}
         </div>
       </div>
 

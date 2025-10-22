@@ -6,6 +6,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ["Poppins", "sans-serif"],
+      },
       keyframes: {
         scroll: {
           "0%": { transform: "translateX(0)" },

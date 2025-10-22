@@ -1,7 +1,13 @@
 "use client";
 
 import Image from "next/image";
-import React, { useState, useEffect, useRef, Dispatch, SetStateAction } from "react";
+import React, {
+  useState,
+  useEffect,
+  useRef,
+  Dispatch,
+  SetStateAction,
+} from "react";
 import { motion } from "framer-motion";
 
 export default function Navbar() {
@@ -24,19 +30,15 @@ export default function Navbar() {
   const handleSmoothScroll = (hash: string) => {
     const target = document.querySelector(hash);
     if (!target) return;
-    const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - 120;
+    const targetPosition =
+      target.getBoundingClientRect().top + window.pageYOffset - 120;
     window.scrollTo({ top: targetPosition, behavior: "smooth" });
   };
 
   return (
     <>
       <style jsx>{`
-        @font-face {
-          font-family: 'Space Age';
-          src: url('/fonts/space age.ttf') format('truetype');
-          font-weight: normal;
-          font-style: normal;
-        }
+        /* Using Poppins font from layout.tsx */
 
         .navbar-container {
           position: fixed;
@@ -68,7 +70,8 @@ export default function Navbar() {
         }
 
         .navbar:hover {
-          box-shadow: 0 0 40px rgba(255, 255, 255, 0.4), 0 8px 32px rgba(0, 0, 0, 0.5);
+          box-shadow: 0 0 40px rgba(255, 255, 255, 0.4),
+            0 8px 32px rgba(0, 0, 0, 0.5);
           border-color: rgba(255, 255, 255, 0.4);
         }
 
@@ -158,7 +161,7 @@ export default function Navbar() {
           background: transparent;
           border: 2px solid rgba(255, 255, 255, 0.2);
           color: white;
-          font-family: 'Space Age', sans-serif;
+          font-family: "Poppins", sans-serif;
           font-size: 16px;
           letter-spacing: 0.05em;
           padding: 18px 40px;
@@ -174,7 +177,8 @@ export default function Navbar() {
         .mobile-menu-button:active {
           background: rgba(255, 255, 255, 0.1);
           border-color: rgba(255, 255, 255, 0.5);
-          box-shadow: 0 0 30px rgba(255, 255, 255, 0.6), inset 0 0 20px rgba(255, 255, 255, 0.1);
+          box-shadow: 0 0 30px rgba(255, 255, 255, 0.6),
+            inset 0 0 20px rgba(255, 255, 255, 0.1);
           transform: translateY(-2px);
         }
 
@@ -288,7 +292,7 @@ export default function Navbar() {
             justify-content: center;
             max-width: 100%;
           }
-          
+
           .hamburger-button {
             display: none !important;
           }
@@ -319,7 +323,10 @@ export default function Navbar() {
       >
         <nav className="navbar">
           {/* Logo */}
-          <div className="navbar-logo" onClick={() => handleSmoothScroll("#home")}>
+          <div
+            className="navbar-logo"
+            onClick={() => handleSmoothScroll("#home")}
+          >
             <Image
               src="/assets/Navbar logo  FIANL(400 x 200 px).png"
               width={160}
@@ -330,16 +337,24 @@ export default function Navbar() {
           </div>
 
           {/* Desktop Menu with Sliding Tabs */}
-          <div className="navbar-menu">
+          <div className="navbar-menu bold">
             <SlideTabs
-              items={["HOME", "ABOUT", "TRACKS", "SCHEDULE", "PRIZES", "SPONSORS", "FAQS"]}
+              items={[
+                "HOME",
+                "ABOUT",
+                "TRACKS",
+                "SCHEDULE",
+                "PRIZES",
+                "SPONSORS",
+                "FAQS",
+              ]}
               onItemClick={handleSmoothScroll}
             />
           </div>
 
           {/* Mobile Menu Button */}
           <button
-            className={`hamburger-button ${isMobileMenuOpen ? "active" : ""}`}
+            className={`hamburger-button ${isMobileMenuOpen ? "active" : ""} `}
             onClick={toggleMobileMenu}
             aria-label="Toggle menu"
           >
@@ -351,9 +366,19 @@ export default function Navbar() {
       </div>
 
       {/* Mobile Menu */}
-      <div className={`mobile-menu-overlay ${isMobileMenuOpen ? "active" : ""}`}>
-        <div className="mobile-menu-content">
-          {["HOME", "ABOUT", "TRACKS", "SCHEDULE", "PRIZES", "SPONSORS", "FAQS"].map((item) => (
+      <div
+        className={`mobile-menu-overlay ${isMobileMenuOpen ? "active" : ""}`}
+      >
+        <div className="mobile-menu-content bold">
+          {[
+            "HOME",
+            "ABOUT",
+            "TRACKS",
+            "SCHEDULE",
+            "PRIZES",
+            "SPONSORS",
+            "FAQS",
+          ].map((item) => (
             <button
               key={item}
               className="mobile-menu-button"
@@ -382,7 +407,11 @@ const SlideTabs = ({
   items: string[];
   onItemClick: (hash: string) => void;
 }) => {
-  const [position, setPosition] = useState<Position>({ left: 0, width: 0, opacity: 0 });
+  const [position, setPosition] = useState<Position>({
+    left: 0,
+    width: 0,
+    opacity: 0,
+  });
   const [isHovered, setIsHovered] = useState(false);
 
   return (
@@ -393,20 +422,27 @@ const SlideTabs = ({
         setIsHovered(false);
       }}
       className="relative flex rounded-full border bg-black/90 backdrop-blur-md"
-      style={{ 
-        justifyContent: 'space-between',
-        padding: '16px 24px',
-        width: '100%',
-        maxWidth: '100%',
-        borderColor: isHovered ? 'rgba(255, 255, 255, 0.4)' : 'rgba(255, 255, 255, 0.2)',
-        boxShadow: isHovered 
-          ? '0 0 30px rgba(255, 255, 255, 0.3), inset 0 0 20px rgba(255, 255, 255, 0.05)' 
-          : 'none',
-        transition: 'all 0.3s ease'
+      style={{
+        justifyContent: "space-between",
+        padding: "16px 24px",
+        width: "100%",
+        maxWidth: "100%",
+        borderColor: isHovered
+          ? "rgba(255, 255, 255, 0.4)"
+          : "rgba(255, 255, 255, 0.2)",
+        boxShadow: isHovered
+          ? "0 0 30px rgba(255, 255, 255, 0.3), inset 0 0 20px rgba(255, 255, 255, 0.05)"
+          : "none",
+        transition: "all 0.3s ease",
       }}
     >
       {items.map((item) => (
-        <Tab key={item} label={item} setPosition={setPosition} onClick={onItemClick} />
+        <Tab
+          key={item}
+          label={item}
+          setPosition={setPosition}
+          onClick={onItemClick}
+        />
       ))}
       <Cursor position={position} />
     </ul>
@@ -434,12 +470,12 @@ const Tab = ({
       }}
       onClick={() => onClick(`#${label.toLowerCase()}`)}
       className="relative z-10 cursor-pointer text-white mix-blend-difference transition-all"
-      style={{ 
-        fontFamily: "'Space Age', sans-serif",
-        letterSpacing: '0.05em',
-        fontSize: '16px',
-        padding: '10px 12px',
-        textTransform: 'uppercase'
+      style={{
+        fontFamily: "'Poppins', sans-serif",
+        letterSpacing: "0.05em",
+        fontSize: "16px",
+        padding: "10px 12px",
+        textTransform: "uppercase",
       }}
     >
       {label}
@@ -452,6 +488,6 @@ const Cursor = ({ position }: { position: Position }) => (
     animate={{ ...position }}
     transition={{ type: "spring", stiffness: 300, damping: 30 }}
     className="absolute z-0 rounded-full bg-white"
-    style={{ height: 'calc(100% - 8px)', top: '4px' }}
+    style={{ height: "calc(100% - 8px)", top: "4px" }}
   />
 );
