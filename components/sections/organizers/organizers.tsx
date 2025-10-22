@@ -106,7 +106,7 @@ export default function Organizers() {
     <section className="w-full">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10">
         <h1
-          className="text-center text-white font-black tracking-wide mb-8 sm:mb-10"
+          className="text-center text-white font-black tracking-wide mb-8 sm:mb-10 bold"
           style={{
             fontFamily: "Poppins, sans-serif",
             fontSize: "clamp(2rem, 4vw, 3rem)",
