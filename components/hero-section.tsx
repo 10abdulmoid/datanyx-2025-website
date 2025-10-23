@@ -10,7 +10,7 @@ import DevfolioButton from "@/components/DevfolioButton";
 
   const poppins = Poppins({
     subsets: ["latin"],
-    weight: ["600"], // choose your weight
+    weight: ["600"],
   });
 
 function useCountdown(targetISO: string) {
@@ -48,17 +48,16 @@ function TimeBlock({ label, value }: { label: string; value: number }) {
 }
 
 export function HeroSection() {
-  // Load Devfolio SDK for the Apply button
-  useEffect(() => {
-    const script = document.createElement('script');
-    script.src = 'https://apply.devfolio.co/v2/sdk.js';
-    script.async = true;
-    script.defer = true;
-    document.body.appendChild(script);
-    return () => {
-      document.body.removeChild(script);
-    }
-  }, []);
+  // useEffect(() => {
+  //   const script = document.createElement('script');
+  //   script.src = 'https://apply.devfolio.co/v2/sdk.js';
+  //   script.async = true;
+  //   script.defer = true;
+  //   document.body.appendChild(script);
+  //   return () => {
+  //     document.body.removeChild(script);
+  //   }
+  // }, []);
   //  Countdown to registration deadline: November 14, 2025, 11:59 PM IST (18:29:59 UTC)
   const { d, h, m, s, done, isClient } = useCountdown('2025-11-14T18:29:59Z')
 

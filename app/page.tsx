@@ -19,7 +19,6 @@ export default function Page() {
   const [scrollY, setScrollY] = useState(0);
   const [ready, setReady] = useState(false);
 
-  // Optional one-time per session
   const sessionSkip = false;
   useEffect(() => {
     if (!sessionSkip) return;
@@ -32,7 +31,7 @@ export default function Page() {
     setReady(true);
   }, [sessionSkip]);
 
-  // Scroll tracking (with proper cleanup)
+  // Scroll tracking 
   useEffect(() => {
     const onScroll = () => setScrollY(window.scrollY);
     window.addEventListener("scroll", onScroll, { passive: true });
