@@ -4,31 +4,31 @@ import React, { useEffect, useRef, useState } from "react";
 
 const TIMELINE_EVENTS = [
   {
-    date: "Oct 25",
+    date: "Oct 20",
     title: "Registrations Start",
     description: "Begin your journey to DATANYX 2025",
   },
   {
-    date: "Nov 10",
+    date: "Nov 18",
     title: "Registration Closes",
     description: "Last chance to secure your spot",
   },
   {
-    date: "Nov 14",
+    date: "Nov 23",
     title: "Shortlisting Announcement",
     description: "Selected teams announced",
   },
   {
-    date: "Nov 15",
+    date: "Nov 23",
     title: "Waitlist Announcement",
     description: "Waitlisted teams notified",
   },
   {
-    date: "Nov 18",
+    date: "Nov 25",
     title: "Final RSVP",
     description: "Confirm your participation",
   },
-  { date: "Nov 22", title: "Let's Hack!", description: "The hackathon begins" },
+  { date: "Nov 29", title: "Let's Hack!", description: "The hackathon begins" },
 ];
 
 export default function ScheduleSection() {
