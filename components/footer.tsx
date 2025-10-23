@@ -155,15 +155,15 @@ export function Footer() {
             className="glow-text text-lg font-bold tracking-wide"
             style={{ fontFamily: "Poppins, sans-serif" }}
           >
-            DATANYX'25 WEB TEAM:
+            {/* DATANYX'25 WEB TEAM : <img src="/assets/datanyx25logo.png" alt="Datanyx Logo" /> */}
           </span>
 
-          <div
+          {/* <div
             className="flex flex-wrap justify-center gap-2 scale-90"
             style={{ fontFamily: "Poppins, sans-serif" }}
           >
             <AnimatedTooltip items={people} />
-          </div>
+          </div> */}
         </div>
 
         {/* Footer Bottom */}

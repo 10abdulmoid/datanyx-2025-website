@@ -5,11 +5,11 @@ const SPONSORS = [
     tier: "Platinum Sponsor",
   },
 
-  // {
-  //   name: "Devfolio",
-  //   src: "/devfolio.png",
-  //   tier: "Gold Sponsor",
-  // },
+  {
+    name: "Chika-A Coffee Collective",
+    src: "/chika.png",
+    tier: "Bronze Sponsor",
+  },
   // {
   //   name: "ETHIndia",
   //   src: "/ethindia.png",
