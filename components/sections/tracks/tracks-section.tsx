@@ -5,25 +5,25 @@ const DOMAINS = [
   {
     key: "fintech",
     title: "FinTech",
-    image: "assets/domain-pics/fin.png",
+    image: "assets/domain-pics/fintech.png",
     badge: "Finance",
   },
   {
     key: "medtech",
     title: "MedTech",
-    image: "assets/domain-pics/med.png",
+    image: "assets/domain-pics/medtech.png",
     badge: "Healthcare",
   },
   {
     key: "agrotech",
     title: "AgroTech",
-    image: "assets/domain-pics/agro.png",
+    image: "assets/domain-pics/agrotech.png",
     badge: "Agriculture",
   },
   {
     key: "edtech",
     title: "EdTech",
-    image: "assets/domain-pics/ed.png",
+    image: "assets/domain-pics/edtech.png",
     badge: "Education",
   },
 ];
