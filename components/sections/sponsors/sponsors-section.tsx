@@ -4,7 +4,6 @@ const SPONSORS = [
     src: "AWS.png",
     tier: "Platinum Sponsor",
   },
-
   {
     name: "Chika-A Coffee Collective",
     src: "/chika.png",
@@ -190,6 +189,11 @@ export function SponsorsSection() {
                         animation: `float ${
                           3 + (i % 2)
                         }s ease-in-out infinite ${i * 0.2}s`,
+                        transform:
+                          s.name === "Chika-A Coffee Collective"
+                            ? "scale(1.2)"
+                            : "scale(1)",
+                        transition: "transform 0.3s ease-in-out",
                       }}
                     >
                       <div className="h-32 flex items-center justify-center mb-4">
@@ -197,6 +201,12 @@ export function SponsorsSection() {
                           src={s.src || "/placeholder.svg"}
                           alt={`${s.name} logo`}
                           className="max-h-24 max-w-full object-contain rounded-lg"
+                          style={{
+                            width:
+                              s.name === "Chika-A Coffee Collective"
+                                ? "150px"
+                                : "100%",
+                          }}
                         />
                       </div>
                       <div className="text-center">
