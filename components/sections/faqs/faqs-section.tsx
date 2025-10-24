@@ -11,11 +11,11 @@ const FAQS = [
     a: "A Datathon is a competitive event where participants leverage data science, machine learning, and analytics to solve real-world problems using large datasets. Teams work within a fixed timeframe to analyze data, build models, and present actionable insights or solutions.",
   },
   {
-    q: "What is Datanyx 2.0?",
+    q: "What is Datanyx 25?",
     a: "Datanyx 2.0 is a 24-hour Datathon organized by IEEE SMC MJCET in collaboration with AWS Cloud Club MJCET. The event challenges participants to apply their data-driven creativity and technical expertise to develop innovative and impactful solutions",
   },
   {
-    q: "How can we register for Datanyx 2.0?",
+    q: "How can we register for Datanyx 25?",
     a: "Registration is simple. Click the Register button on our website and fill in your team details. Make sure all members’ information is accurate before submitting the form",
   },
   {
