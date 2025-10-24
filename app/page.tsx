@@ -12,8 +12,7 @@ import FaqsSection from "../components/sections/faqs/faqs-section";
 import Organizers from "@/components/sections/organizers/organizers";
 import Footer from "../components/footer";
 import FullscreenPreloader from "@/components/ui/PreLoader";
-import StarBorder from "@/components/ui/StarBorder_button";
-import ChatInterface from "../components/ChatInterface";
+// import ChatInterface from "../components/ChatInterface";
 
 export default function Page() {
   const [scrollY, setScrollY] = useState(0);
@@ -89,23 +88,11 @@ export default function Page() {
           <SponsorsSection />
           <FaqsSection />
           <Organizers />
-          {/* <StarBorder
-            as="a"
-            href="https://unstop.com/hackathons/datanyx-muffakham-jah-college-of-engineering-technology-1188761"
-            target="_blank"
-            rel="noopener noreferrer"
-            color="white"
-            speed="6s"
-            className="cursor-pointer mx-auto"
-            style={{ textDecoration: "none" }}
-          >
-            Datanyx’24
-          </StarBorder> */}
           <Footer />
         </div>
 
         {/* Chat Interface - Lazy loaded */}
-        {ready && <ChatInterface />}
+        {/* {ready && <ChatInterface />} */}
       </main>
     </>
   );
