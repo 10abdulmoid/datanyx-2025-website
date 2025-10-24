@@ -165,11 +165,11 @@ export function AboutSection() {
           <div className="space-y-4 max-w-7xl">
             <p className="text-gray-300 text-lg leading-relaxed">
               Building on the success of its first edition,{" "}
-              <span className="text-blue-300 font-semibold">Datanyx 2.0</span>{" "}
+              <span className="text-blue-300 font-semibold">Datanyx 25</span>{" "}
               is Telangana&apos;s flagship 24-hour datathon, organized by{" "}
               <span className="text-blue-300">IEEE SMC MJCET</span> and the{" "}
-              <span className="text-blue-300">AWS Cloud Club MJCET</span> in
-              collaboration with the Department of CS &amp; AI, MJCET.
+              <span className="text-blue-300">AWS Cloud Club MJCET</span> under the
+              guidance of Department of CS &amp; AI, MJCET.
             </p>
             <p className="text-gray-300 text-lg leading-relaxed">
               This offline high-energy event challenges participants to analyze
