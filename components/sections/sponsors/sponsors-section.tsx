@@ -205,7 +205,7 @@ export function SponsorsSection() {
                             width:
                               s.name === "Chika-A Coffee Collective"
                                 ? "150px"
-                                : "100%",
+                                : "200px",
                           }}
                         />
                       </div>

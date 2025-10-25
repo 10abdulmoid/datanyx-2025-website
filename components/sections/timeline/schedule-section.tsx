@@ -381,7 +381,7 @@ export default function ScheduleSection() {
                 animation: "pulse 3s ease-in-out infinite",
               }}
             >
-              Create. Adapt. Dominate
+              CODE. CREATE. CONQUER.
             </p>
           </div>
 
