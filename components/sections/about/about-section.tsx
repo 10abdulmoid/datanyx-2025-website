@@ -1,8 +1,6 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
-import About from "@/components/sections/about/images";
-import { orbitron } from "@/lib/fonts";
 
 type Stat = { label: string; value: string };
 
@@ -251,7 +249,6 @@ export function AboutSection() {
           }
         `}</style>
       </div>
-      {/* <About /> */}
     </section>
   );
 }
