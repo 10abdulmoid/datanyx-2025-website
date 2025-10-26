@@ -16,7 +16,7 @@
   font-weight: 700;
 }
 
-/* Prevent horizontal scroll on all pages */
+/* Prevents horizontal scroll on all pages */
 html,
 body {
   max-width: 100%;
