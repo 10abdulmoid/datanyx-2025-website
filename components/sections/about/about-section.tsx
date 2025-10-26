@@ -162,8 +162,8 @@ export function AboutSection() {
         </h1>
 
         <div className="backdrop-blur-sm bg-black/10 rounded-xl p-6 border border-blue-500/20 shadow-lg shadow-blue-500/5">
-          <div className="space-y-4 max-w-7xl">
-            <p className="text-gray-300 text-lg leading-relaxed">
+                    <div className="space-y-4 max-w-7xl">
+            <p className="text-gray-300 text-lg leading-relaxed text-center">
               Building on the success of its first edition,{" "}
               <span className="text-blue-300 font-semibold">Datanyx 25</span>{" "}
               is Telangana&apos;s flagship 24-hour datathon, organized by{" "}
@@ -171,20 +171,19 @@ export function AboutSection() {
               <span className="text-blue-300">AWS Cloud Club MJCET</span> under the
               guidance of Department of CS &amp; AI, MJCET.
             </p>
-            <p className="text-gray-300 text-lg leading-relaxed">
+            <p className="text-gray-300 text-lg leading-relaxed text-center">
               This offline high-energy event challenges participants to analyze
               complex datasets, build machine learning models, and solve
               real-world problems in a competitive yet collaborative
               environment.
             </p>
-            <p className="text-gray-300 text-lg leading-relaxed">
+            <p className="text-gray-300 text-lg leading-relaxed text-center">
               The thrill begins as problem statements are revealed on the spot,
               testing creativity, speed, and technical skills. Teams will have{" "}
               <span className="text-blue-300 font-semibold">24 hours</span> to
               transform ideas into actionable, data-driven solutions.
             </p>
           </div>
-
           <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4">
             {stats.map((s, i) => {
               const { prefix, num, suffix } = parseNumeric(s.value);
