@@ -31,10 +31,6 @@ export default function OGImage() {
           alt="Datanyx 2.0"
           style={{ width: 200, height: 200, marginBottom: 40 }}
         />
-        Datanyx 2.0
-        <p style={{ fontSize: 32, marginTop: 10 }}>
-          Telangana’s Premier 24-Hour National Datathon
-        </p>
       </div>
     ),
     { ...size }
