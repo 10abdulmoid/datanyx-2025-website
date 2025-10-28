@@ -18,12 +18,12 @@ export const metadata: Metadata = {
 
   title: {
     default: "Datanyx 2.0 | Telangana's Premier 24-Hour National Datathon",
-    template: "%s | Datanyx 2.0"
+    template: "%s | Datanyx 2.0",
   },
-  
+
   description:
     "Join Datanyx 2.0, India's premier national-level 24-hour datathon organized by IEEE SMC MJCET & AWS Cloud Club MJCET. Compete with undergraduate teams, solve real-world problems using data science, ML & AI. Prizes worth ₹XX,XXX!",
-  
+
   keywords: [
     "Datanyx 2.0",
     "Datanyx 2025",
@@ -42,15 +42,15 @@ export const metadata: Metadata = {
     "undergraduate hackathon India",
     "MJCET events",
   ],
-  
+
   authors: [
     { name: "IEEE SMC MJCET", url: "https://www.datanyx.in" },
     { name: "AWS Cloud Club MJCET", url: "https://www.datanyx.in" },
   ],
-  
+
   creator: "IEEE SMC MJCET & AWS Cloud Club MJCET",
   publisher: "IEEE SMC MJCET & AWS Cloud Club MJCET",
-  
+
   openGraph: {
     title: "Datanyx 2.0 | India's Premier 24-Hour National Datathon 2025",
     description:
@@ -61,7 +61,7 @@ export const metadata: Metadata = {
     locale: "en_IN",
     images: [
       {
-        url: "/assets/datanyx25logo.png",
+        url: "/opengraph-image",
         width: 1200,
         height: 630,
         alt: "Datanyx 2.0 - National 24-Hour Datathon",
@@ -69,7 +69,7 @@ export const metadata: Metadata = {
       },
     ],
   },
-  
+
   twitter: {
     card: "summary_large_image",
     site: "@DatanyxEvent",
@@ -77,9 +77,9 @@ export const metadata: Metadata = {
     title: "Datanyx 2.0 | National Datathon - Register Your Team Now! 🚀",
     description:
       "24-hour national datathon | Data Science, ML & AI challenges | Teams of 2-4 | Prizes, mentorship & certificates | Organized by IEEE SMC MJCET & AWS Cloud Club",
-    images: ["/assets/datanyx25logo.png"],
+    images: ["/opengraph-image"],
   },
-  
+
   robots: {
     index: true,
     follow: true,
@@ -91,11 +91,10 @@ export const metadata: Metadata = {
       "max-video-preview": -1,
     },
   },
-  
+
   alternates: {
     canonical: "https://www.datanyx.in",
   },
-  
 
   other: {
     "event:type": "datathon",
@@ -103,9 +102,10 @@ export const metadata: Metadata = {
     "event:registration": "open",
     "event:level": "national",
     "event:team-size": "2-4 members",
-    "og:image:secure_url": "https://www.datanyx.in/assets/datanyx25logo.png",
+    "og:image:secure_url": "https://www.datanyx.in/opengraph-image",
   },
 };
+
 
 export default function RootLayout({
   children,
