@@ -29,7 +29,7 @@ export default function OGImage() {
         <img
           src="https://www.datanyx.in/assets/datanyx25logo.png"
           alt="Datanyx 2.0"
-          style={{ width: 400, height: 200, marginBottom: 40 }}
+          style={{ width: 600, height: 350, marginBottom: 40 }}
         />
       </div>
     ),
