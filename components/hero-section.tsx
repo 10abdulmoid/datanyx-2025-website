@@ -58,8 +58,8 @@ export function HeroSection() {
   //     document.body.removeChild(script);
   //   }
   // }, []);
-  //  Countdown to registration deadline: November 14, 2025, 11:59 PM IST (18:29:59 UTC)
-  const { d, h, m, s, done, isClient } = useCountdown('2025-11-14T18:29:59Z')
+  //  Countdown to registration deadline: November 18, 2025, 11:59 PM IST (18:29:59 UTC)
+  const { d, h, m, s, done, isClient } = useCountdown('2025-11-18T18:29:59Z')
 
   const sphereRef = useRef<HTMLDivElement>(null)
   const contentRef = useRef<HTMLDivElement>(null)
