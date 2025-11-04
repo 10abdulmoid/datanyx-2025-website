@@ -16,7 +16,7 @@ export default function OGImage() {
         style={{
           width: "100%",
           height: "100%",
-          backgroundColor: "black", // 👈 Black background
+          backgroundColor: "black", 
           color: "white",
           display: "flex",
           flexDirection: "column",

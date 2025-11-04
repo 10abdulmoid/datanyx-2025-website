@@ -105,7 +105,6 @@ function CountUp({
 }
 
 export function AboutSection() {
-  // Blue-only accents, prize pool explicitly set to ₹100,000+
   const stats: Stat[] = [
     { label: "Participants", value: "300+" },
     { label: "Hours", value: "24" },
