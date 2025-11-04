@@ -70,7 +70,7 @@ function DomainCard({
 export function DomainsSection() {
   return (
     <section
-      id="domains"
+      id="tracks"
       aria-labelledby="domains-title"
       className="scroll-mt-24 py-8 md:py-12 relative"
     >
