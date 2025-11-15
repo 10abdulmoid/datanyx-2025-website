@@ -9,11 +9,16 @@ const SPONSORS = [
     src: "/chika.png",
     tier: "Bronze Sponsor",
   },
-  // {
-  //   name: "ETHIndia",
-  //   src: "/ethindia.png",
-  //   tier: "Silver Sponsor",
-  // },
+  {
+    name: "StudyIn",
+    src: "/study_in.jpg",
+    tier: "Gold Sponsor",
+  },
+  {
+    name: "EPW INDIA LIMITED",
+    src: "/epw.png",
+    tier: "Hydration Partner",
+  },
 ];
 
 export function SponsorsSection() {
@@ -214,6 +219,45 @@ export function SponsorsSection() {
                           {s.name}
                         </h4>
                         <span className="inline-block mt-1 px-2 py-0.5 rounded-full bg-gradient-to-r from-amber-700 to-orange-600 text-xs font-semibold text-black">
+                          {s.tier}
+                        </span>
+                      </div>
+                    </div>
+                  )
+                )}
+              </div>
+            </div>
+
+            {/* Hydration Partner */}
+            <div className="mb-8">
+              <h3 className="text-2xl font-semibold mb-4 bg-gradient-to-r from-gray-200 to-gray-100 bg-clip-text text-transparent">
+                Hydration Partner
+              </h3>
+              <div className="grid gap-6 grid-cols-1 md:grid-cols-4">
+                {SPONSORS.filter((s) => s.tier === "Hydration Partner").map(
+                  (s, i) => (
+                    <div
+                      key={s.name}
+                      className="rounded-xl border border-white/10 bg-black/40 p-3 backdrop-blur-sm hover:border-cyan-600/30 transition-colors flex flex-col items-center"
+                      style={{
+                        boxShadow: "0 0 15px rgba(8, 145, 178, 0.12)",
+                        animation: `float ${
+                          3 + (i % 2)
+                        }s ease-in-out infinite ${i * 0.2}s`,
+                      }}
+                    >
+                      <div className="h-32 flex items-center justify-center mb-4">
+                        <img
+                          src={s.src || "/placeholder.svg"}
+                          alt={`${s.name} logo`}
+                          className="max-h-24 max-w-full object-contain rounded-lg"
+                        />
+                      </div>
+                      <div className="text-center">
+                        <h4 className="text-sm font-medium text-white">
+                          {s.name}
+                        </h4>
+                        <span className="inline-block mt-1 px-2 py-0.5 rounded-full bg-gradient-to-r from-cyan-600 to-sky-500 text-xs font-semibold text-black">
                           {s.tier}
                         </span>
                       </div>
