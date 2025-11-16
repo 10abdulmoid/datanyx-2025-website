@@ -80,7 +80,7 @@ export default function Navbar() {
         }
 
         .navbar-logo img {
-          height: 52px;
+          height: 60px;
           width: auto;
           filter: brightness(1.2);
           transition: all 0.3s ease;
@@ -194,7 +194,7 @@ export default function Navbar() {
           }
 
           .navbar-logo img {
-            height: 36px;
+            height: 48px;
           }
 
           .hamburger-line {
@@ -229,7 +229,7 @@ export default function Navbar() {
           }
 
           .navbar-logo img {
-            height: 40px;
+            height: 48px;
           }
 
           .hamburger-line {
@@ -263,7 +263,7 @@ export default function Navbar() {
           }
 
           .navbar-logo img {
-            height: 48px;
+            height: 56px;
           }
 
           .mobile-menu-overlay {
@@ -309,7 +309,7 @@ export default function Navbar() {
           }
 
           .navbar-logo img {
-            height: 56px;
+            height: 64px;
           }
         }
       `}</style>
@@ -328,9 +328,9 @@ export default function Navbar() {
             onClick={() => handleSmoothScroll("#home")}
           >
             <Image
-              src="/assets/Navbar logo  FIANL(400 x 200 px).png"
-              width={160}
-              height={80}
+              src="/datanyx.png"
+              width={200}
+              height={100}
               alt="DATANYX Logo"
               priority
             />
