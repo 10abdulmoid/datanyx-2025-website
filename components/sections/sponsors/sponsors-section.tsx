@@ -5,6 +5,16 @@ const SPONSORS = [
     tier: "Platinum Sponsor",
   },
   {
+    name:"Full Stack Academy",
+    src: "/fsa_sponsor.png",
+    tier: "Bronze Sponsor",
+  },
+  {
+    name: "Renavart",
+    src: "/renavart_sponsor.png",
+    tier: "Silver Sponsor",
+  },
+  {
     name: "Chika-A Coffee Collective",
     src: "/chika.png",
     tier: "Bronze Sponsor",
