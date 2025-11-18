@@ -12,6 +12,7 @@ import FaqsSection from "../components/sections/faqs/faqs-section";
 import Organizers from "@/components/sections/organizers/organizers";
 import Footer from "../components/footer";
 import FullscreenPreloader from "@/components/ui/PreLoader";
+import CommunityPartnersSection from "@/components/sections/community_partners/page";
 // import ChatInterface from "../components/ChatInterface";
 
 export default function Page() {
@@ -86,6 +87,7 @@ export default function Page() {
           <ScheduleSection />
           <PrizesSection />
           <SponsorsSection />
+          <CommunityPartnersSection />
           <FaqsSection />
           <Organizers />
           <Footer />
