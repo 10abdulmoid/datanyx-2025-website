@@ -9,7 +9,7 @@ const TIMELINE_EVENTS = [
     description: "Begin your journey to DATANYX 2025",
   },
   {
-    date: "Nov 18",
+    date: "Nov 21",
     title: "Registration Closes",
     description: "Last chance to secure your spot",
   },
