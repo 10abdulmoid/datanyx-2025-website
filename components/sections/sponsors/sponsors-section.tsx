@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const SPONSORS = [
   {
     name: "AWS",
@@ -7,7 +9,7 @@ const SPONSORS = [
   {
     name:"Full Stack Academy",
     src: "/fsa_sponsor.png",
-    tier: "Bronze Sponsor",
+    tier: "Educational Partner",
   },
   {
     name: "Renavart",
@@ -29,7 +31,21 @@ const SPONSORS = [
     src: "/epw.png",
     tier: "Hydration Partner",
   },
+  {
+    name: "Olive Hospital",
+    src: "/olive_hospital.png",
+    tier: "Gold Sponsor",
+  },
 ];
+
+const SPONSOR_LINKS: Record<string, string> = {
+  "Olive Hospital": "/sponsors/olive_hospital",
+  "Chika-A Coffee Collective": "/sponsors/chika_cafe",
+  "EPW INDIA LIMITED": "/sponsors/epw",
+  "Full Stack Academy": "/sponsors/fsa",
+  Renavart: "/sponsors/renavart",
+  StudyIn: "/sponsors/study_in",
+};
 
 export function SponsorsSection() {
   return (
@@ -89,21 +105,44 @@ export function SponsorsSection() {
                         }s ease-in-out infinite ${i * 0.2}s`,
                       }}
                     >
-                      <div className="h-32 flex items-center justify-center mb-4">
-                        <img
-                          src={s.src || "/placeholder.svg"}
-                          alt={`${s.name} logo`}
-                          className="max-h-24 max-w-full object-contain rounded-lg"
-                        />
-                      </div>
-                      <div className="text-center">
-                        <h4 className="text-lg font-medium text-white">
-                          {s.name}
-                        </h4>
-                        <span className="inline-block mt-1 px-3 py-1 rounded-full bg-gradient-to-r from-gray-300 to-gray-100 text-xs font-semibold text-black">
-                          {s.tier}
-                        </span>
-                      </div>
+                      {SPONSOR_LINKS[s.name] ? (
+                        <Link
+                          href={SPONSOR_LINKS[s.name]}
+                          className="w-full flex flex-col items-center"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <div className="h-32 flex items-center justify-center mb-4">
+                            <img
+                              src={s.src || "/placeholder.svg"}
+                              alt={`${s.name} logo`}
+                              className="max-h-24 max-w-full object-contain rounded-lg"
+                            />
+                          </div>
+                          <div className="text-center">
+                            <h4 className="text-lg font-medium text-white">{s.name}</h4>
+                            <span className="inline-block mt-1 px-3 py-1 rounded-full bg-gradient-to-r from-gray-300 to-gray-100 text-xs font-semibold text-black">
+                              {s.tier}
+                            </span>
+                          </div>
+                        </Link>
+                      ) : (
+                        <>
+                          <div className="h-32 flex items-center justify-center mb-4">
+                            <img
+                              src={s.src || "/placeholder.svg"}
+                              alt={`${s.name} logo`}
+                              className="max-h-24 max-w-full object-contain rounded-lg"
+                            />
+                          </div>
+                          <div className="text-center">
+                            <h4 className="text-lg font-medium text-white">{s.name}</h4>
+                            <span className="inline-block mt-1 px-3 py-1 rounded-full bg-gradient-to-r from-gray-300 to-gray-100 text-xs font-semibold text-black">
+                              {s.tier}
+                            </span>
+                          </div>
+                        </>
+                      )}
                     </div>
                   )
                 )}
@@ -128,21 +167,44 @@ export function SponsorsSection() {
                         }s ease-in-out infinite ${i * 0.2}s`,
                       }}
                     >
-                      <div className="h-32 flex items-center justify-center mb-4">
-                        <img
-                          src={s.src || "/placeholder.svg"}
-                          alt={`${s.name} logo`}
-                          className="max-h-24 max-w-full object-contain rounded-lg"
-                        />
-                      </div>
-                      <div className="text-center">
-                        <h4 className="text-lg font-medium text-white">
-                          {s.name}
-                        </h4>
-                        <span className="inline-block mt-1 px-3 py-1 rounded-full bg-gradient-to-r from-yellow-500 to-amber-400 text-xs font-semibold text-black">
-                          {s.tier}
-                        </span>
-                      </div>
+                      {SPONSOR_LINKS[s.name] ? (
+                        <Link
+                          href={SPONSOR_LINKS[s.name]}
+                          className="w-full flex flex-col items-center"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <div className="h-32 flex items-center justify-center mb-4">
+                            <img
+                              src={s.src || "/placeholder.svg"}
+                              alt={`${s.name} logo`}
+                              className="max-h-24 max-w-full object-contain rounded-lg"
+                            />
+                          </div>
+                          <div className="text-center">
+                            <h4 className="text-lg font-medium text-white">{s.name}</h4>
+                            <span className="inline-block mt-1 px-3 py-1 rounded-full bg-gradient-to-r from-yellow-500 to-amber-400 text-xs font-semibold text-black">
+                              {s.tier}
+                            </span>
+                          </div>
+                        </Link>
+                      ) : (
+                        <>
+                          <div className="h-32 flex items-center justify-center mb-4">
+                            <img
+                              src={s.src || "/placeholder.svg"}
+                              alt={`${s.name} logo`}
+                              className="max-h-24 max-w-full object-contain rounded-lg"
+                            />
+                          </div>
+                          <div className="text-center">
+                            <h4 className="text-lg font-medium text-white">{s.name}</h4>
+                            <span className="inline-block mt-1 px-3 py-1 rounded-full bg-gradient-to-r from-yellow-500 to-amber-400 text-xs font-semibold text-black">
+                              {s.tier}
+                            </span>
+                          </div>
+                        </>
+                      )}
                     </div>
                   )
                 )}
@@ -167,21 +229,106 @@ export function SponsorsSection() {
                         }s ease-in-out infinite ${i * 0.2}s`,
                       }}
                     >
-                      <div className="h-32 flex items-center justify-center mb-4">
-                        <img
-                          src={s.src || "/placeholder.svg"}
-                          alt={`${s.name} logo`}
-                          className="max-h-24 max-w-full object-contain rounded-lg"
-                        />
-                      </div>
-                      <div className="text-center">
-                        <h4 className="text-base font-medium text-white">
-                          {s.name}
-                        </h4>
-                        <span className="inline-block mt-1 px-2 py-1 rounded-full bg-gradient-to-r from-gray-400 to-slate-300 text-xs font-semibold text-black">
-                          {s.tier}
-                        </span>
-                      </div>
+                      {SPONSOR_LINKS[s.name] ? (
+                        <Link
+                          href={SPONSOR_LINKS[s.name]}
+                          className="w-full flex flex-col items-center"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <div className="h-32 flex items-center justify-center mb-4">
+                            <img
+                              src={s.src || "/placeholder.svg"}
+                              alt={`${s.name} logo`}
+                              className="max-h-24 max-w-full object-contain rounded-lg"
+                            />
+                          </div>
+                          <div className="text-center">
+                            <h4 className="text-base font-medium text-white">{s.name}</h4>
+                            <span className="inline-block mt-1 px-2 py-1 rounded-full bg-gradient-to-r from-gray-400 to-slate-300 text-xs font-semibold text-black">
+                              {s.tier}
+                            </span>
+                          </div>
+                        </Link>
+                      ) : (
+                        <>
+                          <div className="h-32 flex items-center justify-center mb-4">
+                            <img
+                              src={s.src || "/placeholder.svg"}
+                              alt={`${s.name} logo`}
+                              className="max-h-24 max-w-full object-contain rounded-lg"
+                            />
+                          </div>
+                          <div className="text-center">
+                            <h4 className="text-base font-medium text-white">{s.name}</h4>
+                            <span className="inline-block mt-1 px-2 py-1 rounded-full bg-gradient-to-r from-gray-400 to-slate-300 text-xs font-semibold text-black">
+                              {s.tier}
+                            </span>
+                          </div>
+                        </>
+                      )}
+                    </div>
+                  )
+                )}
+              </div>
+            </div>
+
+            {/* Educational Partner */}
+            <div className="mb-8">
+              <h3 className="text-2xl font-semibold mb-4 bg-gradient-to-r from-gray-200 to-gray-100 bg-clip-text text-transparent">
+                Educational Partner
+              </h3>
+              <div className="grid gap-6 grid-cols-1 md:grid-cols-4">
+                {SPONSORS.filter((s) => s.tier === "Educational Partner").map(
+                  (s, i) => (
+                    <div
+                      key={s.name}
+                      className="rounded-xl border border-white/10 bg-black/40 p-4 backdrop-blur-sm hover:border-green-600/30 transition-colors flex flex-col items-center"
+                      style={{
+                        boxShadow: "0 0 15px rgba(22, 163, 74, 0.12)",
+                        animation: `float ${
+                          3 + (i % 2)
+                        }s ease-in-out infinite ${i * 0.2}s`,
+                      }}
+                    >
+                      {SPONSOR_LINKS[s.name] ? (
+                        <Link
+                          href={SPONSOR_LINKS[s.name]}
+                          className="w-full flex flex-col items-center"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <div className="h-32 flex items-center justify-center mb-4">
+                            <img
+                              src={s.src || "/placeholder.svg"}
+                              alt={`${s.name} logo`}
+                              className="max-h-24 max-w-full object-contain rounded-lg"
+                            />
+                          </div>
+                          <div className="text-center">
+                            <h4 className="text-sm font-medium text-white">{s.name}</h4>
+                            <span className="inline-block mt-1 px-2 py-0.5 rounded-full bg-gradient-to-r from-green-600 to-emerald-500 text-xs font-semibold text-black">
+                              {s.tier}
+                            </span>
+                          </div>
+                        </Link>
+                      ) : (
+                        <>
+                          <div className="h-32 flex items-center justify-center mb-4">
+                            <img
+                              src={s.src || "/placeholder.svg"}
+                              alt={`${s.name} logo`}
+                              className="max-h-24 max-w-full object-contain rounded-lg"
+                            />
+                          </div>
+                          <div className="text-center">
+                            <h4 className="text-sm font-medium text-white">{s.name}</h4>
+                            <span className="inline-block mt-1 px-2 py-0.5 rounded-full bg-gradient-to-r from-green-600 to-emerald-500 text-xs font-semibold text-black">
+                              {s.tier}
+                            </span>
+                          </div>
+                        </>
+                      )}
                     </div>
                   )
                 )}
@@ -211,32 +358,63 @@ export function SponsorsSection() {
                         transition: "transform 0.3s ease-in-out",
                       }}
                     >
-                      <div className="h-32 flex items-center justify-center mb-4">
-                        <img
-                          src={s.src || "/placeholder.svg"}
-                          alt={`${s.name} logo`}
-                          className="max-h-24 max-w-full object-contain rounded-lg"
-                          style={{
-                            width:
-                              s.name === "Chika-A Coffee Collective"
-                                ? "150px"
-                                : "200px",
-                          }}
-                        />
-                      </div>
-                      <div className="text-center">
-                        <h4 className="text-sm font-medium text-white">
-                          {s.name}
-                        </h4>
-                        <span className="inline-block mt-1 px-2 py-0.5 rounded-full bg-gradient-to-r from-amber-700 to-orange-600 text-xs font-semibold text-black">
-                          {s.tier}
-                        </span>
-                      </div>
+                      {SPONSOR_LINKS[s.name] ? (
+                        <Link
+                          href={SPONSOR_LINKS[s.name]}
+                          className="w-full flex flex-col items-center"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <div className="h-32 flex items-center justify-center mb-4">
+                            <img
+                              src={s.src || "/placeholder.svg"}
+                              alt={`${s.name} logo`}
+                              className="max-h-24 max-w-full object-contain rounded-lg"
+                              style={{
+                                width:
+                                  s.name === "Chika-A Coffee Collective"
+                                    ? "150px"
+                                    : "200px",
+                              }}
+                            />
+                          </div>
+                          <div className="text-center">
+                            <h4 className="text-sm font-medium text-white">{s.name}</h4>
+                            <span className="inline-block mt-1 px-2 py-0.5 rounded-full bg-gradient-to-r from-amber-700 to-orange-600 text-xs font-semibold text-black">
+                              {s.tier}
+                            </span>
+                          </div>
+                        </Link>
+                      ) : (
+                        <>
+                          <div className="h-32 flex items-center justify-center mb-4">
+                            <img
+                              src={s.src || "/placeholder.svg"}
+                              alt={`${s.name} logo`}
+                              className="max-h-24 max-w-full object-contain rounded-lg"
+                              style={{
+                                width:
+                                  s.name === "Chika-A Coffee Collective"
+                                    ? "150px"
+                                    : "200px",
+                              }}
+                            />
+                          </div>
+                          <div className="text-center">
+                            <h4 className="text-sm font-medium text-white">{s.name}</h4>
+                            <span className="inline-block mt-1 px-2 py-0.5 rounded-full bg-gradient-to-r from-amber-700 to-orange-600 text-xs font-semibold text-black">
+                              {s.tier}
+                            </span>
+                          </div>
+                        </>
+                      )}
                     </div>
                   )
                 )}
               </div>
             </div>
+
+            
 
             {/* Hydration Partner */}
             <div className="mb-8">
@@ -256,21 +434,44 @@ export function SponsorsSection() {
                         }s ease-in-out infinite ${i * 0.2}s`,
                       }}
                     >
-                      <div className="h-32 flex items-center justify-center mb-4">
-                        <img
-                          src={s.src || "/placeholder.svg"}
-                          alt={`${s.name} logo`}
-                          className="max-h-24 max-w-full object-contain rounded-lg"
-                        />
-                      </div>
-                      <div className="text-center">
-                        <h4 className="text-sm font-medium text-white">
-                          {s.name}
-                        </h4>
-                        <span className="inline-block mt-1 px-2 py-0.5 rounded-full bg-gradient-to-r from-cyan-600 to-sky-500 text-xs font-semibold text-black">
-                          {s.tier}
-                        </span>
-                      </div>
+                      {SPONSOR_LINKS[s.name] ? (
+                        <Link
+                          href={SPONSOR_LINKS[s.name]}
+                          className="w-full flex flex-col items-center"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <div className="h-32 flex items-center justify-center mb-4">
+                            <img
+                              src={s.src || "/placeholder.svg"}
+                              alt={`${s.name} logo`}
+                              className="max-h-24 max-w-full object-contain rounded-lg"
+                            />
+                          </div>
+                          <div className="text-center">
+                            <h4 className="text-sm font-medium text-white">{s.name}</h4>
+                            <span className="inline-block mt-1 px-2 py-0.5 rounded-full bg-gradient-to-r from-cyan-600 to-sky-500 text-xs font-semibold text-black">
+                              {s.tier}
+                            </span>
+                          </div>
+                        </Link>
+                      ) : (
+                        <>
+                          <div className="h-32 flex items-center justify-center mb-4">
+                            <img
+                              src={s.src || "/placeholder.svg"}
+                              alt={`${s.name} logo`}
+                              className="max-h-24 max-w-full object-contain rounded-lg"
+                            />
+                          </div>
+                          <div className="text-center">
+                            <h4 className="text-sm font-medium text-white">{s.name}</h4>
+                            <span className="inline-block mt-1 px-2 py-0.5 rounded-full bg-gradient-to-r from-cyan-600 to-sky-500 text-xs font-semibold text-black">
+                              {s.tier}
+                            </span>
+                          </div>
+                        </>
+                      )}
                     </div>
                   )
                 )}

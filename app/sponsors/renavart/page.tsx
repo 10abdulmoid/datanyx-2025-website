@@ -11,7 +11,7 @@ export default function InfoCard() {
           <img
             src="/renavart_sponsor.png"
             alt="Renavart Recyclers Logo"
-            className="w-24 h-24 object-contain rounded-2xl border border-white/40 bg-white/10"
+            className="w-16 h-16 object-contain"
           />
         </div>
 

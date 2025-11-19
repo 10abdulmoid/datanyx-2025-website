@@ -11,10 +11,9 @@ export default function InfoCard() {
           <img
             src="/study_in.jpg"
             alt="Study In"
-            className="w-24 h-24 object-contain rounded-2xl border border-white/40 bg-white/10"
+            className="w-16 h-16 object-contain"
           />
         </div>
-
         {/* Company Name */}
         <h1 className="text-3xl sm:text-4xl font-semibold mb-4">
           Study In
