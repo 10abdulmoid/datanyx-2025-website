@@ -17,6 +17,11 @@ const SPONSORS = [
     tier: "Silver Sponsor",
   },
   {
+    name: "Bharat Cloud",
+    src: "/bharat_cloud.png",
+    tier: "Silver Sponsor",
+  },
+  {
     name: "Chika-A Coffee Collective",
     src: "/chika.png",
     tier: "Silver Sponsor",
@@ -178,7 +183,7 @@ export function SponsorsSection() {
                             <img
                               src={s.src || "/placeholder.svg"}
                               alt={`${s.name} logo`}
-                              className="max-h-24 max-w-full object-contain rounded-lg"
+                              className={`${s.name === "Olive Hospital" ? "max-h-36" : "max-h-32"} max-w-full object-contain rounded-lg`}
                             />
                           </div>
                           <div className="text-center">
@@ -194,7 +199,7 @@ export function SponsorsSection() {
                             <img
                               src={s.src || "/placeholder.svg"}
                               alt={`${s.name} logo`}
-                              className="max-h-24 max-w-full object-contain rounded-lg"
+                              className={`${s.name === "Olive Hospital" ? "max-h-28" : "max-h-24"} max-w-full object-contain rounded-lg`}
                             />
                           </div>
                           <div className="text-center">
