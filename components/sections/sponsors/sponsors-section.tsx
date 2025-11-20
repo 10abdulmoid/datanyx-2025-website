@@ -19,7 +19,7 @@ const SPONSORS = [
   {
     name: "Chika-A Coffee Collective",
     src: "/chika.png",
-    tier: "Bronze Sponsor",
+    tier: "Silver Sponsor",
   },
   {
     name: "StudyIn",
@@ -336,7 +336,7 @@ export function SponsorsSection() {
             </div>
 
             {/* Bronze Sponsors */}
-            <div className="mb-8">
+            {/* <div className="mb-8">
               <h3 className="text-2xl font-semibold mb-4 bg-gradient-to-r from-gray-200 to-gray-100 bg-clip-text text-transparent">
                 Bronze Sponsors
               </h3>
@@ -412,7 +412,7 @@ export function SponsorsSection() {
                   )
                 )}
               </div>
-            </div>
+            </div> */}
 
             
 
