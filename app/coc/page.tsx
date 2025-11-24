@@ -21,7 +21,7 @@ const CodeOfConductPage: React.FC = () => {
       </AnimatePresence>
 
       {/* If your Navbar is fixed, this top padding prevents overlap. Adjust to your navbar height. */}
-      <main className="pt-20 sm:pt-20">
+      <main className="pt-10 sm:pt-20">
         <div className="min-h-screen bg-[url('/bg-pattern.png')] bg-cover bg-center flex justify-center items-start py-8 sm:py-12 px-4 sm:px-6">
           <div className="w-full max-w-4xl z-1100 backdrop-blur-xl bg-white/10 border border-white/30 rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 shadow-2xl space-y-4 sm:space-y-6">
             {/* Heading */}
