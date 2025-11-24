@@ -1,14 +1,24 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Head from "next/head";
+import { AnimatePresence } from "motion/react";
+import FullscreenPreloader from "@/components/ui/PreLoader";
 
 const CodeOfConductPage: React.FC = () => {
+  const [isLoading, setIsLoading] = useState(true);
+  
   return (
     <>
       <Head>
         <title>DATANYX'25 - Code of Conduct</title>
       </Head>
+
+      <AnimatePresence mode="wait">
+        {isLoading && (
+          <FullscreenPreloader onDone={() => setIsLoading(false)} />
+        )}
+      </AnimatePresence>
 
       {/* If your Navbar is fixed, this top padding prevents overlap. Adjust to your navbar height. */}
       <main className="pt-1000 sm:pt-20">
