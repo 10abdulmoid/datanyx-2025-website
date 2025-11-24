@@ -14,12 +14,12 @@ const TIMELINE_EVENTS = [
     description: "Last chance to secure your spot",
   },
   {
-    date: "Nov 23",
+    date: "Nov 24",
     title: "Shortlisting Announcement",
     description: "Selected teams announced",
   },
   {
-    date: "Nov 23",
+    date: "Nov 24",
     title: "Waitlist Announcement",
     description: "Waitlisted teams notified",
   },
