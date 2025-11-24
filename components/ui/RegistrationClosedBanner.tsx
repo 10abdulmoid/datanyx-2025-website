@@ -2,7 +2,7 @@ import React from 'react';
 
 const RegistrationClosedBanner = () => {
   return (
-    <div className="fixed bottom-0 left-0 z-[9999] w-full overflow-hidden bg-[#00ff9d] py-2 text-black font-bold uppercase tracking-widest shadow-[0_-4px_20px_rgba(0,255,157,0.3)]">
+    <div className="w-full overflow-hidden bg-[#00ff9d] py-2 text-black font-bold uppercase tracking-widest shadow-[0_-4px_20px_rgba(0,255,157,0.3)]">
       <div className="relative flex overflow-x-hidden">
         <div className="animate-marquee whitespace-nowrap py-1 flex items-center">
           {Array(10).fill(null).map((_, i) => (

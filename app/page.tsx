@@ -4,6 +4,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import Navbar from "../components/navbar";
 import HeroSection from "../components/hero-section";
 import AnnouncementBanner from "@/components/ui/AnnouncementBanner";
+import RegistrationClosedBanner from '@/components/ui/RegistrationClosedBanner';
 import AboutSection from "../components/sections/about/about-section";
 import DomainsSection from "../components/sections/tracks/tracks-section";
 import ScheduleSection from "../components/sections/timeline/schedule-section";
@@ -70,7 +71,10 @@ export default function Page() {
         }}
       >
         <Navbar />
-        <AnnouncementBanner />
+        <div className="fixed bottom-0 left-0 w-full z-[100] flex flex-col">
+          <AnnouncementBanner />
+          <RegistrationClosedBanner />
+        </div>
         <HeroSection />
         <div
           className="relative z-10"
