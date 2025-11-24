@@ -318,7 +318,7 @@ export function HeroSection() {
           </Link> */}
         </div>
       )}
-          {/* <StarBorder
+          <StarBorder
             as="a"
             href="/shortlisted_teams"
             rel="noopener noreferrer"
@@ -326,8 +326,8 @@ export function HeroSection() {
             speed="6s"
             className="cursor-pointer mx-auto mt-6 md:mt-6 lg:mt-6 pointer-events-auto"
           >
-            Shortlisted Teams 
-          </StarBorder> */}
+            Results Live 🎉
+          </StarBorder>
         </div>
       </div>
 
