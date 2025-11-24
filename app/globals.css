@@ -177,6 +177,15 @@ body {
   .animate-scroll {
     animation-direction: var(--animation-direction);
   }
+
+  /* Hide scrollbar for all browsers */
+  .scrollbar-hide {
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;  /* Firefox */
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;  /* Safari and Chrome */
+  }
 }
 /* Hide app until client JS toggles a flag */
 html:not([data-mounted="true"]) body > * {
