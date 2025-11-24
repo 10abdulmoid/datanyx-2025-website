@@ -146,7 +146,7 @@ export default function Navbar() {
           visibility: hidden;
           transition: opacity 0.3s ease, visibility 0.3s ease;
           z-index: 998;
-          padding: 40px 20px;
+          padding: 120px 20px 40px 20px;
         }
 
         .mobile-menu-overlay.active {
@@ -209,7 +209,7 @@ export default function Navbar() {
           }
 
           .mobile-menu-overlay {
-            padding: 30px 16px;
+            padding: 100px 16px 30px 16px;
           }
 
           .mobile-menu-content {
@@ -244,7 +244,7 @@ export default function Navbar() {
           }
 
           .mobile-menu-overlay {
-            padding: 35px 20px;
+            padding: 110px 20px 35px 20px;
           }
 
           .mobile-menu-content {
@@ -273,7 +273,7 @@ export default function Navbar() {
           }
 
           .mobile-menu-overlay {
-            padding: 40px 30px;
+            padding: 120px 30px 40px 30px;
           }
 
           .mobile-menu-content {
