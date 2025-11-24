@@ -1,8 +1,9 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import HeroSection from "../components/hero-section";
 import Navbar from "../components/navbar";
+import HeroSection from "../components/hero-section";
+import AnnouncementBanner from "@/components/ui/AnnouncementBanner";
 import AboutSection from "../components/sections/about/about-section";
 import DomainsSection from "../components/sections/tracks/tracks-section";
 import ScheduleSection from "../components/sections/timeline/schedule-section";
@@ -31,7 +32,7 @@ export default function Page() {
     setReady(true);
   }, [sessionSkip]);
 
-  // Scroll tracking 
+  // Scroll tracking
   useEffect(() => {
     const onScroll = () => setScrollY(window.scrollY);
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -48,8 +49,7 @@ export default function Page() {
     window.scrollTo(0, 0);
   }, []);
 
-  const halfViewportHeight =
-    typeof window !== "undefined" ? window.innerHeight / 2 : 400;
+  const halfViewportHeight = typeof window !== "undefined" ? window.innerHeight / 2 : 400;
   const scrollProgress = Math.min(scrollY / halfViewportHeight, 1);
 
   return (
@@ -61,7 +61,6 @@ export default function Page() {
           onDone={handlePreloaderDone}
         />
       )}
-
       <main
         className="min-h-dvh scroll-smooth dark"
         style={{
@@ -71,8 +70,8 @@ export default function Page() {
         }}
       >
         <Navbar />
+        <AnnouncementBanner />
         <HeroSection />
-
         <div
           className="relative z-10"
           style={{
@@ -92,7 +91,6 @@ export default function Page() {
           <Organizers />
           <Footer />
         </div>
-
         {/* Chat Interface - Lazy loaded */}
         {/* {ready && <ChatInterface />} */}
       </main>

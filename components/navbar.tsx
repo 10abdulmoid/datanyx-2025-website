@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import React, {
   useState,
   useEffect,
@@ -13,6 +14,7 @@ import { motion } from "framer-motion";
 export default function Navbar() {
   const [isVisible, setIsVisible] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -29,7 +31,11 @@ export default function Navbar() {
 
   const handleSmoothScroll = (hash: string) => {
     const target = document.querySelector(hash);
-    if (!target) return;
+    if (!target) {
+      // If element doesn't exist on current page, navigate to home page with hash
+      router.push(`/${hash}`);
+      return;
+    }
     const targetPosition =
       target.getBoundingClientRect().top + window.pageYOffset - 120;
     window.scrollTo({ top: targetPosition, behavior: "smooth" });

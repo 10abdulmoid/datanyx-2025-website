@@ -3,6 +3,8 @@
 import { useState, useEffect, useRef } from "react";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
+import RegistrationClosedBanner from '@/components/ui/RegistrationClosedBanner';
+import AnnouncementBanner from '@/components/ui/AnnouncementBanner';
 import { CometCard } from "@/components/ui/comet-card";
 import { AnimatePresence, motion } from "motion/react";
 import { X, Search } from "lucide-react";
@@ -327,6 +329,8 @@ export default function ShortlistedTeamsPage() {
         )}
       </AnimatePresence>
       <Navbar />
+      <RegistrationClosedBanner />
+      <AnnouncementBanner />
       
       {/* Background Effects */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
