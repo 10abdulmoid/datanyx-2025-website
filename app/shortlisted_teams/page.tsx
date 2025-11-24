@@ -388,7 +388,7 @@ export default function ShortlistedTeamsPage() {
 
       <div className="flex-grow container mx-auto px-4 relative z-10">
         {/* Main Heading Section */}
-        <div className="pt-32 sm:pt-32 md:pt-48 lg:pt-52 pb-8 md:pb-12 text-center">
+        <div className="pt-40 sm:pt-48 md:pt-56 lg:pt-64 pb-8 md:pb-12 text-center">
           <h1 
             className="text-4xl md:text-5xl lg:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-b from-white via-white to-white/50 tracking-tight mb-4 md:mb-6"
             style={{ fontFamily: 'Poppins, sans-serif' }}
