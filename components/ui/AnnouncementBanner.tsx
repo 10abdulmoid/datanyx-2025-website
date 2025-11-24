@@ -2,7 +2,7 @@ import React from 'react';
 
 const AnnouncementBanner = () => {
   return (
-    <div className="fixed bottom-[44px] left-0 z-[9998] w-full overflow-hidden bg-[#3b82f6] py-2 text-white font-bold uppercase tracking-widest shadow-[0_-4px_20px_rgba(59,130,246,0.3)]">
+    <div className="fixed bottom-0 left-0 z-[9998] w-full overflow-hidden bg-[#3b82f6] py-2 text-white font-bold uppercase tracking-widest shadow-[0_-4px_20px_rgba(59,130,246,0.3)]">
       <div className="relative flex overflow-x-hidden">
         <div className="animate-marquee whitespace-nowrap py-1 flex items-center">
           {Array(10).fill(null).map((_, i) => (

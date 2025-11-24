@@ -235,7 +235,11 @@ function ExpandedCard({ trackKey, type, onClose }: { trackKey: string; type: 'sh
   if (!track) return null;
 
   return (
-    <div className="fixed inset-0 z-[2000] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
+    <div 
+      className="fixed inset-0 z-[2000] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm"
+      onWheel={(e) => e.stopPropagation()}
+      onTouchMove={(e) => e.stopPropagation()}
+    >
       <div className="absolute inset-0" onClick={onClose} />
       <motion.div
         layoutId={`card-${trackKey}-${type}`}
@@ -269,49 +273,63 @@ function ExpandedCard({ trackKey, type, onClose }: { trackKey: string; type: 'sh
           </div>
         </div>
 
-        {/* Scrollable List */}
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2 }}
-          className="flex-1 overflow-y-auto p-6 space-y-3 custom-scrollbar"
-        >
-          {/* Search Input */}
-          <div className="relative mb-4">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-white/40" size={18} />
-            <input
-              type="text"
-              placeholder="Search teams or leaders..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full bg-white/5 border border-white/10 rounded-xl py-3 pl-10 pr-4 text-white placeholder:text-white/30 focus:outline-none focus:border-white/30 focus:bg-white/10 transition-all"
-            />
-          </div>
-
-          {teams.length > 0 ? (
-            teams.map((team, idx) => (
-              <motion.div
-                key={team.id}
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.3 + idx * 0.05 }}
-                className="flex items-center justify-between p-4 rounded-xl bg-white/5 border border-white/5 hover:bg-white/10 hover:border-white/20 transition-all group"
-              >
-                <div>
-                  <h3 className="text-lg font-semibold text-white">{team.name}</h3>
-                </div>
-                <div className="text-right">
-                  <span className="text-xs text-gray-500 uppercase tracking-wider">Leader</span>
-                  <p className="text-sm text-gray-300">{team.leader}</p>
-                </div>
-              </motion.div>
-            ))
-          ) : (
-            <div className="text-center py-12 text-gray-500">
-              No teams {type === 'shortlisted' ? 'shortlisted' : 'waitlisted'} yet for this track.
+        {/* Scrollable Content Area */}
+        <div className="flex-1 flex flex-col overflow-hidden">
+          {/* Sticky Search Input */}
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+            className="sticky top-0 z-10 p-6 pb-4 bg-black/90 backdrop-blur-md border-b border-white/5"
+          >
+            <div className="relative">
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-white/40" size={18} />
+              <input
+                type="text"
+                placeholder="Search teams or leaders..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="w-full bg-white/5 border border-white/10 rounded-xl py-3 pl-10 pr-4 text-white placeholder:text-white/30 focus:outline-none focus:border-white/30 focus:bg-white/10 transition-all"
+              />
             </div>
-          )}
-        </motion.div>
+          </motion.div>
+
+          {/* Scrollable Teams List */}
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3 }}
+            className="flex-1 overflow-y-auto px-6 pb-6 space-y-3"
+            style={{
+              overscrollBehavior: 'contain',
+              WebkitOverflowScrolling: 'touch'
+            }}
+          >
+            {teams.length > 0 ? (
+              teams.map((team, idx) => (
+                <motion.div
+                  key={team.id}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.3 + idx * 0.05 }}
+                  className="flex items-center justify-between p-4 rounded-xl bg-white/5 border border-white/5 hover:bg-white/10 hover:border-white/20 transition-all group"
+                >
+                  <div>
+                    <h3 className="text-lg font-semibold text-white">{team.name}</h3>
+                  </div>
+                  <div className="text-right">
+                    <span className="text-xs text-gray-500 uppercase tracking-wider">Leader</span>
+                    <p className="text-sm text-gray-300">{team.leader}</p>
+                  </div>
+                </motion.div>
+              ))
+            ) : (
+              <div className="text-center py-12 text-gray-500">
+                No teams {type === 'shortlisted' ? 'shortlisted' : 'waitlisted'} yet for this track.
+              </div>
+            )}
+          </motion.div>
+        </div>
       </motion.div>
     </div>
   );
@@ -329,7 +347,6 @@ export default function ShortlistedTeamsPage() {
         )}
       </AnimatePresence>
       <Navbar />
-      <RegistrationClosedBanner />
       <AnnouncementBanner />
       
       {/* Background Effects */}
