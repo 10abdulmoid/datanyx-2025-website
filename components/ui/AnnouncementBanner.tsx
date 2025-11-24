@@ -2,25 +2,25 @@ import React from 'react';
 
 const AnnouncementBanner = () => {
   return (
-    <div className="w-full overflow-hidden bg-[#3b82f6] py-2 text-white font-bold uppercase tracking-widest shadow-[0_-4px_20px_rgba(59,130,246,0.3)]">
+    <div className="w-full overflow-hidden bg-[#3b82f6] py-1 text-white font-bold uppercase tracking-widest shadow-[0_-4px_20px_rgba(59,130,246,0.3)]">
       <div className="relative flex overflow-x-hidden">
         <div className="animate-marquee whitespace-nowrap py-1 flex items-center">
           {Array(10).fill(null).map((_, i) => (
             <React.Fragment key={i}>
-              <span className="mx-4 text-sm md:text-base font-extrabold italic">
+              <span className="mx-4 text-xs md:text-sm font-extrabold italic">
                 Shortlisted & Waitlisted Teams Announcement Coming Soon! Stay Tuned!
               </span>
-              <span className="mx-4 text-sm md:text-base">•</span>
+              <span className="mx-4 text-xs md:text-sm">•</span>
             </React.Fragment>
           ))}
         </div>
         <div className="absolute top-0 animate-marquee2 whitespace-nowrap py-1 flex items-center">
           {Array(10).fill(null).map((_, i) => (
             <React.Fragment key={i}>
-              <span className="mx-4 text-sm md:text-base font-extrabold italic">
+              <span className="mx-4 text-xs md:text-sm font-extrabold italic">
                 Shortlisted & Waitlisted Teams Announcement Coming Soon! Stay Tuned!
               </span>
-              <span className="mx-4 text-sm md:text-base">•</span>
+              <span className="mx-4 text-xs md:text-sm">•</span>
             </React.Fragment>
           ))}
         </div>
