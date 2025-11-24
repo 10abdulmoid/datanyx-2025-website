@@ -6,6 +6,7 @@ import { useEffect, useMemo, useState, useRef } from 'react'
 import StarBorder from '@/components/ui/StarBorder_button'
   import { Poppins } from "next/font/google";
 import DevfolioButton from "@/components/DevfolioButton";
+import RegistrationClosedBanner from '@/components/ui/RegistrationClosedBanner';
 
 
   const poppins = Poppins({
@@ -233,7 +234,7 @@ export function HeroSection() {
             style={{ pointerEvents: 'none' }}
           />
 
-          {/* Countdown */}
+          {/* Countdown
           <div className="flex flex-col items-center gap-1" style={{ pointerEvents: 'none' }}>
             {!done && (
               <p className="text-[10px] sm:text-xs md:text-sm font-medium text-muted-foreground uppercase tracking-wide"
@@ -267,7 +268,7 @@ export function HeroSection() {
                 </>
               )}
             </div>
-          </div>
+          </div> */}
 
           {/* Apply with Devfolio Button */}
           {/* <DevfolioButton slug="datanyx-2025" theme="dark" width="280px" height="50px" />
@@ -283,18 +284,6 @@ export function HeroSection() {
             zIndex: 9999,
           }}
         >
-
-          <StarBorder
-            as="a"
-            href="https://unstop.com/p/datanyx25-muffakham-jah-college-of-engineering-and-technology-mjcet-hyderabad-1572132?utm_medium=Share&utm_source=awsclu81728&utm_campaign=Online_coding_challenge"
-            target="_blank"
-            rel="noopener noreferrer"
-            color="white"
-            speed="6s"
-            className="cursor-pointer mx-auto"
-          >
-            REGISTER NOW!
-          </StarBorder>
 
           {/* <Link
             href="https://devfolio.co/datanyx-2025"
@@ -330,6 +319,17 @@ export function HeroSection() {
           </Link> */}
         </div>
       )}
+          <StarBorder
+            as="a"
+            href="/shortlisted_teams"
+            target="_blank"
+            rel="noopener noreferrer"
+            color="white"
+            speed="6s"
+            className="cursor-pointer mx-auto mt-6 md:mt-6 lg:mt-6 pointer-events-auto"
+          >
+            Shortlisted Teams 
+          </StarBorder>
         </div>
       </div>
 
@@ -344,6 +344,7 @@ export function HeroSection() {
           visibility: 'hidden',
         }}
       />
+      <RegistrationClosedBanner />
     </section>
   )
 }

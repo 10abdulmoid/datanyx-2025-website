@@ -199,7 +199,7 @@ export function SponsorsSection() {
                             <img
                               src={s.src || "/placeholder.svg"}
                               alt={`${s.name} logo`}
-                              className={`${s.name === "Olive Hospital" ? "max-h-28" : "max-h-24"} max-w-full object-contain rounded-lg`}
+                              className="max-h-24 max-w-full object-contain rounded-lg"
                             />
                           </div>
                           <div className="text-center">
