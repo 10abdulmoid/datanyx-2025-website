@@ -6,7 +6,6 @@ import { useEffect, useMemo, useState, useRef } from 'react'
 import StarBorder from '@/components/ui/StarBorder_button'
   import { Poppins } from "next/font/google";
 import DevfolioButton from "@/components/DevfolioButton";
-import RegistrationClosedBanner from '@/components/ui/RegistrationClosedBanner';
 
 
   const poppins = Poppins({
@@ -343,7 +342,6 @@ export function HeroSection() {
           visibility: 'hidden',
         }}
       />
-      <RegistrationClosedBanner />
     </section>
   )
 }

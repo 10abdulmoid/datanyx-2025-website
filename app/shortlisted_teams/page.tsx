@@ -347,7 +347,10 @@ export default function ShortlistedTeamsPage() {
         )}
       </AnimatePresence>
       <Navbar />
-      <AnnouncementBanner />
+      <div className="fixed bottom-0 left-0 w-full z-[100] flex flex-col">
+        <AnnouncementBanner />
+        <RegistrationClosedBanner />
+      </div>
       
       {/* Background Effects */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
