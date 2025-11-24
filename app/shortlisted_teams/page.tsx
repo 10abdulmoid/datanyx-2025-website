@@ -7,7 +7,7 @@ import RegistrationClosedBanner from '@/components/ui/RegistrationClosedBanner';
 import AnnouncementBanner from '@/components/ui/AnnouncementBanner';
 import { CometCard } from "@/components/ui/comet-card";
 import { AnimatePresence, motion } from "motion/react";
-import { X, Search } from "lucide-react";
+import { X, Search, ChevronRight } from "lucide-react";
 import FullscreenPreloader from "@/components/ui/PreLoader";
 
 const DOMAINS = [
@@ -161,7 +161,8 @@ function DomainCard({
   glow,
   border,
   onClick,
-  layoutId
+  layoutId,
+  type
 }: {
   title: string;
   image: string;
@@ -171,6 +172,7 @@ function DomainCard({
   border: string;
   onClick: () => void;
   layoutId: string;
+  type: 'shortlisted' | 'waitlisted';
 }) {
   return (
     <motion.div 
@@ -206,6 +208,24 @@ function DomainCard({
             <div className="mt-auto px-1">
               <motion.h3 className="text-lg md:text-xl font-bold text-white mb-1 transition-colors">{title}</motion.h3>
               <div className="h-1 w-8 md:w-12 bg-white/20 rounded-full group-hover:w-full group-hover:bg-white/50 transition-all duration-500" />
+              
+              {/* Glass-morphic button-style footer with icon and text */}
+              <motion.div 
+                className="mt-3 px-3 py-2 bg-white/5 border border-white/10 rounded-xl backdrop-blur-sm flex items-center justify-between group hover:bg-white/10 hover:border-white/20 transition-all duration-300"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <span className="text-xs md:text-sm text-white/80 font-medium">
+                  {type === 'shortlisted' ? 'View shortlisted teams' : 'View waitlisted teams'}
+                </span>
+                <motion.div
+                  animate={{ x: 0 }}
+                  whileHover={{ x: 2 }}
+                  transition={{ type: 'spring', stiffness: 400, damping: 10 }}
+                >
+                  <ChevronRight size={16} className="text-white/60 group-hover:text-white/90 transition-colors" />
+                </motion.div>
+              </motion.div>
             </div>
           </motion.div>
         </div>
@@ -392,6 +412,7 @@ export default function ShortlistedTeamsPage() {
                   color={d.color}
                   glow={d.glow}
                   border={d.border}
+                  type="shortlisted"
                   onClick={() => setSelectedTrack({ key: d.key, type: 'shortlisted' })}
                 />
               ))}
@@ -430,6 +451,7 @@ export default function ShortlistedTeamsPage() {
                   color={d.color}
                   glow={d.glow}
                   border={d.border}
+                  type="waitlisted"
                   onClick={() => setSelectedTrack({ key: d.key, type: 'waitlisted' })}
                 />
               ))}
