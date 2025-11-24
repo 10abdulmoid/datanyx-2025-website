@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 import RegistrationClosedBanner from '@/components/ui/RegistrationClosedBanner';
-import AnnouncementBanner from '@/components/ui/AnnouncementBanner';
+// import AnnouncementBanner from '@/components/ui/AnnouncementBanner';
 import { CometCard } from "@/components/ui/comet-card";
 import { AnimatePresence, motion } from "motion/react";
 import { X, Search, ChevronRight } from "lucide-react";
@@ -117,9 +117,9 @@ const SHORTLISTED_TEAMS: Record<string, Team[]> = {
     { id: 'e4', name: 'Rivals', leader: 'Mohammed Adnan' },
     { id: 'e5', name: 'kratOS', leader: 'Samala Sripadh' },
     { id: 'e6', name: 'XENO', leader: 'Mohammed Abdul Rahman Siddiqui' },
-    { id: 'e7', name: 'QuadSquad', leader: 'mohd Zaid Hussain' },
+    { id: 'e7', name: 'QuadSquad', leader: 'Mohd Zaid Hussain' },
     { id: 'e8', name: 'innoverse', leader: 'Saba Hajira' },
-    { id: 'e9', name: 'ZeroDay', leader: 'gosula sai sudheendra pranav tej' },
+    { id: 'e9', name: 'ZeroDay', leader: 'Gosula Sai Sudheendra Pranav Tej' },
     { id: 'e10', name: 'AG17', leader: 'Ibrahim Hassan' },
     { id: 'e11', name: 'DevHax', leader: 'Mohd Sajid Zubair' },
     { id: 'e12', name: 'Datasour', leader: 'Soham Rajendra Chaudhari' },
@@ -376,7 +376,7 @@ export default function ShortlistedTeamsPage() {
       </AnimatePresence>
       <Navbar />
       <div className="fixed bottom-0 left-0 w-full z-[100] flex flex-col">
-        <AnnouncementBanner />
+        {/* <AnnouncementBanner /> */}
         <RegistrationClosedBanner />
       </div>
       
@@ -395,6 +395,20 @@ export default function ShortlistedTeamsPage() {
           >
             Shortlisted Teams
           </h1>
+          
+          {/* Code of Conduct Notice */}
+          <div className="max-w-3xl mx-auto mt-6 p-4 md:p-6 bg-white/5 border border-white/10 rounded-2xl backdrop-blur-sm">
+            <p className="text-white/90 text-sm md:text-base font-medium text-center">
+              <span className="font-semibold">Note:</span> Please take a moment to review our{' '}
+              <a 
+                href="/coc" 
+                className="text-[#00ff9d] hover:text-[#00cc7d] underline decoration-2 underline-offset-2 font-semibold transition-colors"
+              >
+                Code of Conduct
+              </a>
+              {' '}to ensure a great experience for everyone at the event.
+            </p>
+          </div>
         </div>
 
         {/* Glassmorphic Card */}
