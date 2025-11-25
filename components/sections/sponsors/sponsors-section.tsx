@@ -7,9 +7,14 @@ const SPONSORS = [
     tier: "Platinum Sponsor",
   },
   {
-    name:"Full Stack Academy",
-    src: "/fsa_sponsor.png",
-    tier: "Educational Partner",
+    name: "StudyIn",
+    src: "/study_in.jpg",
+    tier: "Gold Sponsor",
+  },
+  {
+    name: "Olive Hospital",
+    src: "/olive_hospital.png",
+    tier: "Gold Sponsor",
   },
   {
     name: "Renavart",
@@ -27,19 +32,19 @@ const SPONSORS = [
     tier: "Silver Sponsor",
   },
   {
-    name: "StudyIn",
-    src: "/study_in.jpg",
-    tier: "Gold Sponsor",
+    name: "Karachi",
+    src: "/karachi.jpg",
+    tier: "Bronze Sponsor",
+  },
+  {
+    name: "Full Stack Academy",
+    src: "/fsa_sponsor.png",
+    tier: "Educational Partner",
   },
   {
     name: "EPW INDIA LIMITED",
     src: "/epw.png",
     tier: "Hydration Partner",
-  },
-  {
-    name: "Olive Hospital",
-    src: "/olive_hospital.png",
-    tier: "Gold Sponsor",
   },
 ];
 
@@ -50,6 +55,7 @@ const SPONSOR_LINKS: Record<string, string> = {
   "Full Stack Academy": "/sponsors/fsa",
   Renavart: "/sponsors/renavart",
   StudyIn: "/sponsors/study_in",
+  Karachi: "/sponsors/karachi",
 };
 
 export function SponsorsSection() {
@@ -278,6 +284,68 @@ export function SponsorsSection() {
               </div>
             </div>
 
+            {/* Bronze Sponsors */}
+            <div className="mb-8">
+              <h3 className="text-2xl font-semibold mb-4 bg-gradient-to-r from-gray-200 to-gray-100 bg-clip-text text-transparent">
+                Bronze Sponsors
+              </h3>
+              <div className="grid gap-6 grid-cols-1 md:grid-cols-4">
+                {SPONSORS.filter((s) => s.tier === "Bronze Sponsor").map(
+                  (s, i) => (
+                    <div
+                      key={s.name}
+                      className="rounded-xl border border-white/10 bg-black/20 p-5 backdrop-blur-sm hover:border-amber-700/30 transition-colors flex flex-col items-center"
+                      style={{
+                        boxShadow: "0 0 20px rgba(180, 83, 9, 0.1)",
+                        animation: `float ${
+                          3 + (i % 2)
+                        }s ease-in-out infinite ${i * 0.2}s`,
+                      }}
+                    >
+                      {SPONSOR_LINKS[s.name] ? (
+                        <Link
+                          href={SPONSOR_LINKS[s.name]}
+                          className="w-full flex flex-col items-center"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <div className="h-32 flex items-center justify-center mb-4">
+                            <img
+                              src={s.src || "/placeholder.svg"}
+                              alt={`${s.name} logo`}
+                              className="max-h-32 max-w-full object-contain rounded-lg"
+                            />
+                          </div>
+                          <div className="text-center">
+                            <h4 className="text-lg font-medium text-white">{s.name}</h4>
+                            <span className="inline-block mt-1 px-3 py-1 rounded-full bg-gradient-to-r from-amber-700 to-orange-600 text-xs font-semibold text-black">
+                              {s.tier}
+                            </span>
+                          </div>
+                        </Link>
+                      ) : (
+                        <>
+                          <div className="h-32 flex items-center justify-center mb-4">
+                            <img
+                              src={s.src || "/placeholder.svg"}
+                              alt={`${s.name} logo`}
+                              className="max-h-32 max-w-full object-contain rounded-lg"
+                            />
+                          </div>
+                          <div className="text-center">
+                            <h4 className="text-lg font-medium text-white">{s.name}</h4>
+                            <span className="inline-block mt-1 px-3 py-1 rounded-full bg-gradient-to-r from-amber-700 to-orange-600 text-xs font-semibold text-black">
+                              {s.tier}
+                            </span>
+                          </div>
+                        </>
+                      )}
+                    </div>
+                  )
+                )}
+              </div>
+            </div>
+
             {/* Educational Partner */}
             <div className="mb-8">
               <h3 className="text-2xl font-semibold mb-4 bg-gradient-to-r from-gray-200 to-gray-100 bg-clip-text text-transparent">
@@ -339,85 +407,6 @@ export function SponsorsSection() {
                 )}
               </div>
             </div>
-
-            {/* Bronze Sponsors */}
-            {/* <div className="mb-8">
-              <h3 className="text-2xl font-semibold mb-4 bg-gradient-to-r from-gray-200 to-gray-100 bg-clip-text text-transparent">
-                Bronze Sponsors
-              </h3>
-              <div className="grid gap-6 grid-cols-1 md:grid-cols-4">
-                {SPONSORS.filter((s) => s.tier === "Bronze Sponsor").map(
-                  (s, i) => (
-                    <div
-                      key={s.name}
-                      className="rounded-xl border border-white/10 bg-black/60 p-3 backdrop-blur-sm hover:border-amber-700/30 transition-colors flex flex-col items-center"
-                      style={{
-                        boxShadow: "0 0 15px rgba(180, 83, 9, 0.1)",
-                        animation: `float ${
-                          3 + (i % 2)
-                        }s ease-in-out infinite ${i * 0.2}s`,
-                        transform:
-                          s.name === "Chika-A Coffee Collective"
-                            ? "scale(1.2)"
-                            : "scale(1)",
-                        transition: "transform 0.3s ease-in-out",
-                      }}
-                    >
-                      {SPONSOR_LINKS[s.name] ? (
-                        <Link
-                          href={SPONSOR_LINKS[s.name]}
-                          className="w-full flex flex-col items-center"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          <div className="h-32 flex items-center justify-center mb-4">
-                            <img
-                              src={s.src || "/placeholder.svg"}
-                              alt={`${s.name} logo`}
-                              className="max-h-24 max-w-full object-contain rounded-lg"
-                              style={{
-                                width:
-                                  s.name === "Chika-A Coffee Collective"
-                                    ? "150px"
-                                    : "200px",
-                              }}
-                            />
-                          </div>
-                          <div className="text-center">
-                            <h4 className="text-sm font-medium text-white">{s.name}</h4>
-                            <span className="inline-block mt-1 px-2 py-0.5 rounded-full bg-gradient-to-r from-amber-700 to-orange-600 text-xs font-semibold text-black">
-                              {s.tier}
-                            </span>
-                          </div>
-                        </Link>
-                      ) : (
-                        <>
-                          <div className="h-32 flex items-center justify-center mb-4">
-                            <img
-                              src={s.src || "/placeholder.svg"}
-                              alt={`${s.name} logo`}
-                              className="max-h-24 max-w-full object-contain rounded-lg"
-                              style={{
-                                width:
-                                  s.name === "Chika-A Coffee Collective"
-                                    ? "150px"
-                                    : "200px",
-                              }}
-                            />
-                          </div>
-                          <div className="text-center">
-                            <h4 className="text-sm font-medium text-white">{s.name}</h4>
-                            <span className="inline-block mt-1 px-2 py-0.5 rounded-full bg-gradient-to-r from-amber-700 to-orange-600 text-xs font-semibold text-black">
-                              {s.tier}
-                            </span>
-                          </div>
-                        </>
-                      )}
-                    </div>
-                  )
-                )}
-              </div>
-            </div> */}
 
             
 
