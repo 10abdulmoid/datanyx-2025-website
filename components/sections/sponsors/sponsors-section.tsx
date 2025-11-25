@@ -22,7 +22,7 @@ const SPONSORS = [
     tier: "Silver Sponsor",
   },
   {
-    name: "Bharat Cloud",
+    name: "BharatCloud",
     src: "/bharat_cloud.png",
     tier: "Silver Sponsor",
   },
@@ -56,6 +56,7 @@ const SPONSOR_LINKS: Record<string, string> = {
   Renavart: "/sponsors/renavart",
   StudyIn: "/sponsors/study_in",
   Karachi: "/sponsors/karachi",
+  BharatCloud: "/sponsors/bharatcloud",
 };
 
 export function SponsorsSection() {
@@ -127,7 +128,7 @@ export function SponsorsSection() {
                             <img
                               src={s.src || "/placeholder.svg"}
                               alt={`${s.name} logo`}
-                              className="max-h-24 max-w-full object-contain rounded-lg"
+                              className={`${s.name === "BharatCloud" ? "max-h-48" : "max-h-24"} max-w-full object-contain rounded-lg`}
                             />
                           </div>
                           <div className="text-center">
@@ -143,7 +144,7 @@ export function SponsorsSection() {
                             <img
                               src={s.src || "/placeholder.svg"}
                               alt={`${s.name} logo`}
-                              className="max-h-24 max-w-full object-contain rounded-lg"
+                              className={`${s.name === "BharatCloud" ? "max-h-48" : "max-h-24"} max-w-full object-contain rounded-lg`}
                             />
                           </div>
                           <div className="text-center">
@@ -205,7 +206,7 @@ export function SponsorsSection() {
                             <img
                               src={s.src || "/placeholder.svg"}
                               alt={`${s.name} logo`}
-                              className="max-h-24 max-w-full object-contain rounded-lg"
+                              className={`${s.name === "BharatCloud" ? "max-h-48" : "max-h-24"} max-w-full object-contain rounded-lg`}
                             />
                           </div>
                           <div className="text-center">
@@ -251,7 +252,7 @@ export function SponsorsSection() {
                             <img
                               src={s.src || "/placeholder.svg"}
                               alt={`${s.name} logo`}
-                              className="max-h-24 max-w-full object-contain rounded-lg"
+                              className={`${s.name === "BharatCloud" ? "max-h-48" : "max-h-24"} max-w-full object-contain rounded-lg`}
                             />
                           </div>
                           <div className="text-center">
@@ -267,7 +268,7 @@ export function SponsorsSection() {
                             <img
                               src={s.src || "/placeholder.svg"}
                               alt={`${s.name} logo`}
-                              className="max-h-24 max-w-full object-contain rounded-lg"
+                              className={`${s.name === "BharatCloud" ? "max-h-48" : "max-h-24"} max-w-full object-contain rounded-lg`}
                             />
                           </div>
                           <div className="text-center">
@@ -375,7 +376,7 @@ export function SponsorsSection() {
                             <img
                               src={s.src || "/placeholder.svg"}
                               alt={`${s.name} logo`}
-                              className="max-h-24 max-w-full object-contain rounded-lg"
+                              className={`${s.name === "BharatCloud" ? "max-h-48" : "max-h-24"} max-w-full object-contain rounded-lg`}
                             />
                           </div>
                           <div className="text-center">
@@ -391,7 +392,7 @@ export function SponsorsSection() {
                             <img
                               src={s.src || "/placeholder.svg"}
                               alt={`${s.name} logo`}
-                              className="max-h-24 max-w-full object-contain rounded-lg"
+                              className={`${s.name === "BharatCloud" ? "max-h-48" : "max-h-24"} max-w-full object-contain rounded-lg`}
                             />
                           </div>
                           <div className="text-center">
@@ -439,7 +440,7 @@ export function SponsorsSection() {
                             <img
                               src={s.src || "/placeholder.svg"}
                               alt={`${s.name} logo`}
-                              className="max-h-24 max-w-full object-contain rounded-lg"
+                              className={`${s.name === "BharatCloud" ? "max-h-48" : "max-h-24"} max-w-full object-contain rounded-lg`}
                             />
                           </div>
                           <div className="text-center">
@@ -455,7 +456,7 @@ export function SponsorsSection() {
                             <img
                               src={s.src || "/placeholder.svg"}
                               alt={`${s.name} logo`}
-                              className="max-h-24 max-w-full object-contain rounded-lg"
+                              className={`${s.name === "BharatCloud" ? "max-h-48" : "max-h-24"} max-w-full object-contain rounded-lg`}
                             />
                           </div>
                           <div className="text-center">
