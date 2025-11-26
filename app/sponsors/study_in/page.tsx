@@ -10,13 +10,13 @@ export default function InfoCard() {
         <div className="flex justify-center mb-5">
           <img
             src="/study_in.jpg"
-            alt="Study In"
+            alt="StudyIn"
             className="w-16 h-16 object-contain"
           />
         </div>
         {/* Company Name */}
         <h1 className="text-3xl sm:text-4xl font-semibold mb-4">
-          Study In
+          StudyIn
         </h1>
 
         {/* Subtitle */}
@@ -27,7 +27,7 @@ export default function InfoCard() {
         {/* Info Text */}
         <div className="text-left space-y-4 text-sm sm:text-base leading-relaxed text-white/90">
           <p>
-            Study In is India’s most trusted platform dedicated to helping students achieve their dream of pursuing higher education abroad. It provides reliable guidance, expert consulting, and end-to-end support to simplify every step of the overseas education journey.
+            StudyIn is India’s most trusted platform dedicated to helping students achieve their dream of pursuing higher education abroad. It provides reliable guidance, expert consulting, and end-to-end support to simplify every step of the overseas education journey.
           </p>
 
           <p>
@@ -40,12 +40,12 @@ export default function InfoCard() {
 
           {/* Section Title */}
           <h3 className="text-2xl font-semibold text-white pt-4 text-center">
-            Dream. Choose. Fly. — Study In × Datanyx
+            Dream. Choose. Fly. — StudyIn × Datanyx
           </h3>
 
           {/* Partnership Info */}
           <p>
-            The partnership with Study In adds strong academic and career value to Datanyx. It is a trusted study-abroad consultancy that helps participants explore global education and understand how international qualifications can build up their careers.
+            The partnership with StudyIn adds strong academic and career value to Datanyx. It is a trusted study-abroad consultancy that helps participants explore global education and understand how international qualifications can build up their careers.
           </p>
 
           <p>
@@ -53,7 +53,7 @@ export default function InfoCard() {
           </p>
 
           <p>
-            Datanyx participants gain access to exclusive discounted services and global study opportunities, making the event more future-ready. "Study In" and Datanyx together support continuous learning and sustainable development.
+            Datanyx participants gain access to exclusive discounted services and global study opportunities, making the event more future-ready. "StudyIn" and Datanyx together support continuous learning and sustainable development.
           </p>
         </div>
       </div>
