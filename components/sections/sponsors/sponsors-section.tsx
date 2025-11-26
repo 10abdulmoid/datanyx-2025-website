@@ -22,7 +22,7 @@ const SPONSORS = [
     tier: "Silver Sponsor",
   },
   {
-    name: "BharatCloud",
+    name: "BharathCloud",
     src: "/bharat_cloud.png",
     tier: "Silver Sponsor",
   },
@@ -56,7 +56,7 @@ const SPONSOR_LINKS: Record<string, string> = {
   Renavart: "/sponsors/renavart",
   StudyIn: "/sponsors/study_in",
   Karachi: "/sponsors/karachi",
-  BharatCloud: "/sponsors/bharatcloud",
+  BharathCloud: "/sponsors/bharathcloud",
 };
 
 export function SponsorsSection() {
