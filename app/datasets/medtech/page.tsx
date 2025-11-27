@@ -5,24 +5,15 @@ import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 import { CometCard } from "@/components/ui/comet-card";
 import { AnimatePresence, motion } from "motion/react";
-import { X, ChevronRight, Lightbulb } from "lucide-react";
-import FullscreenPreloader from "@/components/ui/PreLoader";
-
-// This data would typically come from a database or API
-const DATASET_IDEAS: {
-  id: string;
-  title: string;
-  description: string;
-  details: string;
-  tags: string[];
-}[] = [];
+import { X, ChevronRight, Lightbulb, Lock, Unlock, Download, Loader2 } from "lucide-react";
+import { DATASETS, DatasetIdea } from "@/lib/datasets";
 
 function IdeaCard({
   idea,
   onClick,
   layoutId,
 }: {
-  idea: typeof DATASET_IDEAS[0];
+  idea: DatasetIdea;
   onClick: () => void;
   layoutId: string;
 }) {
@@ -41,35 +32,18 @@ function IdeaCard({
         >
           <div className="absolute -inset-2 bg-gradient-to-br from-red-500/20 to-pink-500/20 opacity-0 group-hover:opacity-10 transition-opacity duration-500 -z-10 rounded-[20px]" />
           
-          <motion.div className="relative z-10 flex-1 flex flex-col">
-            <div className="flex items-start justify-between mb-4">
-              <div className="p-3 rounded-xl bg-red-500/10 border border-red-500/20 text-red-400">
-                <Lightbulb size={24} />
-              </div>
-              <motion.div
-                animate={{ x: 0 }}
-                whileHover={{ x: 2 }}
-                transition={{ type: 'spring', stiffness: 400, damping: 10 }}
-              >
-                <ChevronRight size={20} className="text-white/40 group-hover:text-white/80 transition-colors" />
-              </motion.div>
+          <motion.div className="relative z-10 flex-1 flex flex-col items-center justify-center text-center py-8">
+            <div className="p-4 rounded-full bg-red-500/10 border border-red-500/20 text-red-400 mb-4 group-hover:scale-110 transition-transform duration-300">
+              <Lock size={32} />
             </div>
             
-            <motion.h3 className="text-xl font-bold text-white mb-2 group-hover:text-red-400 transition-colors">
-              {idea.title}
+            <motion.h3 className="text-xl md:text-2xl font-bold text-white mb-2 group-hover:text-red-400 transition-colors">
+              {idea.publicTitle}
             </motion.h3>
             
-            <p className="text-white/60 text-sm line-clamp-3 mb-4 flex-grow">
-              {idea.description}
+            <p className="text-white/40 text-sm">
+              Click to unlock details
             </p>
-
-            <div className="flex flex-wrap gap-2 mt-auto">
-              {idea.tags.map(tag => (
-                <span key={tag} className="px-2 py-1 text-[10px] uppercase tracking-wider font-bold bg-white/5 border border-white/10 rounded-full text-white/60">
-                  {tag}
-                </span>
-              ))}
-            </div>
           </motion.div>
         </div>
       </CometCard>
@@ -77,13 +51,34 @@ function IdeaCard({
   );
 }
 
-function ExpandedIdeaCard({ idea, onClose }: { idea: typeof DATASET_IDEAS[0]; onClose: () => void }) {
+function UnlockModal({ idea, onClose }: { idea: DatasetIdea; onClose: () => void }) {
+  const [password, setPassword] = useState("");
+  const [isUnlocked, setIsUnlocked] = useState(false);
+  const [error, setError] = useState(false);
+  const [isChecking, setIsChecking] = useState(false);
+
   useEffect(() => {
     document.body.style.overflow = "hidden";
     return () => {
       document.body.style.overflow = "unset";
     };
   }, []);
+
+  const handleUnlock = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsChecking(true);
+    
+    // Simulate verification delay
+    await new Promise(resolve => setTimeout(resolve, 600));
+
+    if (password === idea.private.password) {
+      setIsUnlocked(true);
+    } else {
+      setError(true);
+      setTimeout(() => setError(false), 2000);
+    }
+    setIsChecking(false);
+  };
 
   if (!idea) return null;
 
@@ -110,35 +105,97 @@ function ExpandedIdeaCard({ idea, onClose }: { idea: typeof DATASET_IDEAS[0]; on
           </button>
 
           <div className="relative z-10">
-            <div className="flex items-center gap-4 mb-6">
-              <div className="p-4 rounded-2xl bg-red-500/20 border border-red-500/30 text-red-400">
-                <Lightbulb size={32} />
-              </div>
-              <div>
-                <motion.h2 className="text-2xl md:text-3xl font-bold text-white mb-1">
-                  {idea.title}
-                </motion.h2>
-                <div className="flex flex-wrap gap-2">
-                  {idea.tags.map(tag => (
-                    <span key={tag} className="px-2 py-0.5 text-xs font-medium bg-white/10 rounded-full text-white/70">
-                      {tag}
-                    </span>
-                  ))}
+            {!isUnlocked ? (
+              // LOCKED STATE
+              <div className="flex flex-col items-center text-center py-8">
+                <div className="w-20 h-20 bg-red-500/10 rounded-2xl flex items-center justify-center mb-6 border border-red-500/20 text-red-400">
+                  <Lock size={40} />
                 </div>
-              </div>
-            </div>
+                <h2 className="text-3xl font-bold text-white mb-2">{idea.publicTitle}</h2>
+                <p className="text-white/50 mb-8 max-w-sm">
+                  Enter the access code provided to your team to view the problem statement and download the dataset.
+                </p>
 
-            <div className="space-y-6 text-white/80 leading-relaxed">
-              <div>
-                <h3 className="text-sm uppercase tracking-wider text-red-400 font-bold mb-2">Description</h3>
-                <p>{idea.description}</p>
+                <form onSubmit={handleUnlock} className="w-full max-w-xs space-y-4">
+                  <div className="relative">
+                    <input
+                      type="password"
+                      value={password}
+                      onChange={(e) => {
+                        setPassword(e.target.value);
+                        setError(false);
+                      }}
+                      placeholder="Access Code"
+                      className={`w-full bg-black/40 border ${
+                        error ? 'border-red-500 text-red-200' : 'border-white/10 focus:border-red-500/50 text-white'
+                      } rounded-xl px-4 py-3 text-center tracking-widest placeholder:tracking-normal focus:outline-none transition-all`}
+                      autoFocus
+                    />
+                    {error && (
+                      <p className="absolute -bottom-6 left-0 right-0 text-xs text-red-400 font-medium">
+                        Incorrect code
+                      </p>
+                    )}
+                  </div>
+                  <button
+                    type="submit"
+                    disabled={isChecking || !password}
+                    className={`w-full bg-white text-black font-bold py-3 rounded-xl hover:bg-gray-100 active:scale-[0.98] transition-all flex items-center justify-center gap-2 ${
+                      (isChecking || !password) ? 'opacity-50 cursor-not-allowed' : ''
+                    }`}
+                  >
+                    {isChecking ? <Loader2 size={18} className="animate-spin" /> : "Unlock"}
+                  </button>
+                </form>
               </div>
-              
-              <div>
-                <h3 className="text-sm uppercase tracking-wider text-red-400 font-bold mb-2">Details</h3>
-                <p>{idea.details}</p>
-              </div>
-            </div>
+            ) : (
+              // UNLOCKED STATE
+              <motion.div 
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4 }}
+              >
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="p-4 rounded-2xl bg-red-500/20 border border-red-500/30 text-red-400">
+                    <Unlock size={32} />
+                  </div>
+                  <div>
+                    <h2 className="text-2xl md:text-3xl font-bold text-white mb-1">
+                      {idea.private.title}
+                    </h2>
+                    <div className="flex flex-wrap gap-2">
+                      {idea.private.tags.map(tag => (
+                        <span key={tag} className="px-2 py-0.5 text-xs font-medium bg-white/10 rounded-full text-white/70">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                <div className="space-y-6 text-white/80 leading-relaxed mb-8">
+                  <div>
+                    <h3 className="text-sm uppercase tracking-wider text-red-400 font-bold mb-2">Description</h3>
+                    <p>{idea.private.description}</p>
+                  </div>
+                  
+                  <div>
+                    <h3 className="text-sm uppercase tracking-wider text-red-400 font-bold mb-2">Details</h3>
+                    <p>{idea.private.details}</p>
+                  </div>
+                </div>
+
+                <a 
+                  href={idea.private.downloadLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full bg-red-500 hover:bg-red-600 text-white font-bold py-4 rounded-xl transition-all flex items-center justify-center gap-2 shadow-lg shadow-red-500/20"
+                >
+                  <Download size={20} />
+                  <span>Download Dataset</span>
+                </a>
+              </motion.div>
+            )}
           </div>
         </div>
       </motion.div>
@@ -147,16 +204,10 @@ function ExpandedIdeaCard({ idea, onClose }: { idea: typeof DATASET_IDEAS[0]; on
 }
 
 export default function MedTechDatasetsPage() {
-  const [selectedIdea, setSelectedIdea] = useState<typeof DATASET_IDEAS[0] | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
+  const [selectedIdea, setSelectedIdea] = useState<DatasetIdea | null>(null);
 
   return (
     <main className="min-h-screen flex flex-col relative bg-black selection:bg-cyan-500/30">
-      <AnimatePresence mode="wait">
-        {isLoading && (
-          <FullscreenPreloader onDone={() => setIsLoading(false)} />
-        )}
-      </AnimatePresence>
       <Navbar />
       
       {/* Background Effects */}
@@ -192,13 +243,14 @@ export default function MedTechDatasetsPage() {
 
             {/* Ideas Grid */}
             <div className="grid gap-4 md:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 perspective-1000">
-              {DATASET_IDEAS.map((idea) => (
-                <IdeaCard
-                  key={idea.id}
-                  layoutId={`idea-${idea.id}`}
-                  idea={idea}
-                  onClick={() => setSelectedIdea(idea)}
-                />
+              {DATASETS.medtech.map((idea) => (
+                <div key={idea.id} className="relative hover:z-10">
+                  <IdeaCard
+                    layoutId={`idea-${idea.id}`}
+                    idea={idea}
+                    onClick={() => setSelectedIdea(idea)}
+                  />
+                </div>
               ))}
             </div>
 
@@ -208,7 +260,7 @@ export default function MedTechDatasetsPage() {
 
       <AnimatePresence>
         {selectedIdea && (
-          <ExpandedIdeaCard 
+          <UnlockModal 
             idea={selectedIdea} 
             onClose={() => setSelectedIdea(null)} 
           />
