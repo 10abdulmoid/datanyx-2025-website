@@ -5,7 +5,7 @@ import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 import { CometCard } from "@/components/ui/comet-card";
 import { AnimatePresence, motion } from "motion/react";
-import { X, ChevronRight, Lightbulb, Lock, Unlock, Download, Loader2 } from "lucide-react";
+import { X, Lock, Unlock, Download, Loader2 } from "lucide-react";
 import FullscreenPreloader from "@/components/ui/PreLoader";
 import { DATASETS, DatasetIdea } from "@/lib/datasets";
 

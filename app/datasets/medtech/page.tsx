@@ -216,7 +216,7 @@ export default function MedTechDatasetsPage() {
   }, []);
 
   if (isLoading) {
-    return <FullscreenPreloader onDone={() setIsLoading(false)} durationMs={1500} />;
+    return <FullscreenPreloader onDone={() => setIsLoading(false)} durationMs={1500} />;
   }
 
   return (
