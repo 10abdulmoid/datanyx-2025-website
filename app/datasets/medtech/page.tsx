@@ -3,54 +3,14 @@
 import { useState, useEffect } from "react";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
-import { CometCard } from "@/components/ui/comet-card";
+
 import { AnimatePresence, motion } from "motion/react";
 import { X, ChevronRight, Lightbulb, Lock, Unlock, Download, Loader2 } from "lucide-react";
 import FullscreenPreloader from "@/components/ui/PreLoader";
 import { DATASETS, DatasetIdea } from "@/lib/datasets";
+import { DatasetCard } from "@/components/ui/dataset-card";
 
-function IdeaCard({
-  idea,
-  onClick,
-  layoutId,
-}: {
-  idea: DatasetIdea;
-  onClick: () => void;
-  layoutId: string;
-}) {
-  return (
-    <motion.div 
-      layoutId={layoutId} 
-      onClick={onClick} 
-      className="cursor-pointer h-full"
-      whileHover={{ scale: 1.02 }}
-      whileTap={{ scale: 0.98 }}
-    >
-      <CometCard className="w-full h-full">
-        <div
-          className="relative flex w-full h-full flex-col items-stretch rounded-[16px] md:rounded-[20px] bg-black/40 backdrop-blur-md border border-red-500/30 p-4 md:p-6 group"
-          style={{ transformStyle: "preserve-3d" }}
-        >
-          <div className="absolute -inset-2 bg-gradient-to-br from-red-500/20 to-pink-500/20 opacity-0 group-hover:opacity-10 transition-opacity duration-500 -z-10 rounded-[20px]" />
-          
-          <motion.div className="relative z-10 flex-1 flex flex-col items-center justify-center text-center py-8">
-            <div className="p-4 rounded-full bg-red-500/10 border border-red-500/20 text-red-400 mb-4 group-hover:scale-110 transition-transform duration-300">
-              <Lock size={32} />
-            </div>
-            
-            <motion.h3 className="text-xl md:text-2xl font-bold text-white mb-2 group-hover:text-red-400 transition-colors">
-              {idea.publicTitle}
-            </motion.h3>
-            
-            <p className="text-white/40 text-sm">
-              Click to unlock details
-            </p>
-          </motion.div>
-        </div>
-      </CometCard>
-    </motion.div>
-  );
-}
+
 
 function UnlockModal({ idea, onClose }: { idea: DatasetIdea; onClose: () => void }) {
   const [password, setPassword] = useState("");
@@ -258,10 +218,11 @@ export default function MedTechDatasetsPage() {
             <div className="grid gap-4 md:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 perspective-1000">
               {DATASETS.medtech.map((idea) => (
                 <div key={idea.id} className="relative hover:z-10">
-                  <IdeaCard
+                  <DatasetCard
                     layoutId={`idea-${idea.id}`}
                     idea={idea}
                     onClick={() => setSelectedIdea(idea)}
+                    color="red"
                   />
                 </div>
               ))}
