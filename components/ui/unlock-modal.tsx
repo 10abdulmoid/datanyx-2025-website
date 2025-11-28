@@ -189,9 +189,10 @@ export function UnlockModal({ idea, onClose, color }: UnlockModalProps) {
                         <FileText size={12} className="sm:w-3.5 sm:h-3.5" />
                         <span>Problem Statement</span>
                       </div>
-                      <p className="text-sm sm:text-base md:text-lg text-zinc-300 leading-relaxed border-l-2 border-zinc-800 pl-4 sm:pl-6">
-                        {idea.private.description}
-                      </p>
+                      <p 
+                        className="text-sm sm:text-base md:text-lg text-zinc-300 leading-relaxed border-l-2 border-zinc-800 pl-4 sm:pl-6"
+                        dangerouslySetInnerHTML={{ __html: idea.private.description }}
+                      />
                     </div>
                     
                     <div className="space-y-2 sm:space-y-3">
