@@ -6,6 +6,7 @@ import Footer from "@/components/footer";
 import { CometCard } from "@/components/ui/comet-card";
 import { AnimatePresence, motion } from "motion/react";
 import { X, ChevronRight, Lightbulb, Lock, Unlock, Download, Loader2 } from "lucide-react";
+import FullscreenPreloader from "@/components/ui/PreLoader";
 import { DATASETS, DatasetIdea } from "@/lib/datasets";
 
 function IdeaCard({
@@ -205,6 +206,18 @@ function UnlockModal({ idea, onClose }: { idea: DatasetIdea; onClose: () => void
 
 export default function MedTechDatasetsPage() {
   const [selectedIdea, setSelectedIdea] = useState<DatasetIdea | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 1500);
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (isLoading) {
+    return <FullscreenPreloader onDone={() setIsLoading(false)} durationMs={1500} />;
+  }
 
   return (
     <main className="min-h-screen flex flex-col relative bg-black selection:bg-cyan-500/30">

@@ -206,6 +206,18 @@ function UnlockModal({ idea, onClose }: { idea: DatasetIdea; onClose: () => void
 
 export default function EdTechDatasetsPage() {
   const [selectedIdea, setSelectedIdea] = useState<DatasetIdea | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 1500);
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (isLoading) {
+    return <FullscreenPreloader onDone={() setIsLoading(false)} durationMs={1500} />;
+  }
 
   return (
     <main className="min-h-screen flex flex-col relative bg-black selection:bg-cyan-500/30">
