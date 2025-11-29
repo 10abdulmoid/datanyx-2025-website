@@ -24,7 +24,7 @@ const RegistrationClosedBanner = () => {
                 <span className="mx-6 text-sm md:text-base font-black italic tracking-wider flex items-center gap-2">
                   <span className="bg-black text-[#00ff9d] px-2 py-0.5 rounded text-xs md:text-sm shadow-sm">NEW</span>
                   🎉 DATASETS AND IDEAS ARE LIVE! 
-                  <span className="underline decoration-2 underline-offset-2 decoration-black/50 hover:decoration-black transition-all">EXPLORE NOW</span> 🚀
+                  <span className="underline decoration-2 underline-offset-2 decoration-black/50 hover:decoration-black transition-all">CHECKOUT DATASETS</span> 🚀
                 </span>
                 <span className="mx-4 text-sm md:text-base opacity-50">•</span>
               </React.Fragment>
