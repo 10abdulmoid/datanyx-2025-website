@@ -320,13 +320,13 @@ export function HeroSection() {
       )}
           <StarBorder
             as="a"
-            href="/shortlisted_teams"
+            href="/datasets"
             rel="noopener noreferrer"
             color="white"
             speed="6s"
             className="cursor-pointer mx-auto mt-6 md:mt-6 lg:mt-6 pointer-events-auto"
           >
-            Results Live 🎉
+            Datasets Live 🎉
           </StarBorder>
         </div>
       </div>

@@ -70,8 +70,6 @@ function DomainCard({
     <motion.div 
       layoutId={layoutId} 
       className="cursor-pointer h-full"
-      whileHover={{ scale: 1.02 }}
-      whileTap={{ scale: 0.98 }}
     >
       <CometCard className="w-full h-full">
         <div
