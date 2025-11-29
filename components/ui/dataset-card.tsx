@@ -64,22 +64,7 @@ export function DatasetCard({ idea, onClick, layoutId, color }: DatasetCardProps
       <div className="relative z-20 h-full flex flex-col justify-between p-8 border border-zinc-800 group-hover:border-transparent transition-colors duration-300">
         
         {/* Top Section */}
-        <div className="flex justify-between items-start">
-          <div className="flex flex-col">
-            <span className={cn(
-              "font-mono text-xs font-bold tracking-widest uppercase mb-1 transition-colors duration-300",
-              isHovered ? "text-black/60" : "text-zinc-500"
-            )}>
-              Dataset_ID
-            </span>
-            <span className={cn(
-              "font-mono text-xl font-black tracking-tighter transition-colors duration-300",
-              isHovered ? "text-black" : "text-white"
-            )}>
-              {idea.id}
-            </span>
-          </div>
-          
+        <div className="flex justify-end items-start">
           <div className={cn(
             "p-2 rounded-full border-2 transition-all duration-300",
             isHovered ? "border-black text-black rotate-12 scale-110" : "border-zinc-800 text-zinc-500"
