@@ -4,14 +4,9 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { useEffect, useMemo, useState, useRef } from 'react'
 import StarBorder from '@/components/ui/StarBorder_button'
-  import { Poppins } from "next/font/google";
+import { poppins } from "@/lib/fonts";
 import DevfolioButton from "@/components/DevfolioButton";
 
-
-  const poppins = Poppins({
-    subsets: ["latin"],
-    weight: ["600"],
-  });
 
 function useCountdown(targetISO: string) {
   const target = useMemo(() => new Date(targetISO).getTime(), [targetISO])
@@ -275,16 +270,16 @@ export function HeroSection() {
             Powered by Devfolio
           </p> */}
           {!done && (
-        <div
-          className="w-full flex justify-center mt-2 sm:mt-3"
-          style={{
-            pointerEvents: "auto",
-            position: "relative",
-            zIndex: 9999,
-          }}
-        >
+            <div
+              className="w-full flex justify-center mt-2 sm:mt-3"
+              style={{
+                pointerEvents: "auto",
+                position: "relative",
+                zIndex: 9999,
+              }}
+            >
 
-          {/* <Link
+              {/* <Link
             href="https://devfolio.co/datanyx-2025"
             target="_blank"
             rel="noopener noreferrer"
@@ -316,8 +311,8 @@ export function HeroSection() {
             />
             <span style={{ whiteSpace: "nowrap" }}>Apply with Devfolio</span>
           </Link> */}
-        </div>
-      )}
+            </div>
+          )}
           <StarBorder
             as="a"
             href="/datasets"

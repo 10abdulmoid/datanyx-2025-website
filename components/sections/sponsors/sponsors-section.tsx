@@ -1,9 +1,27 @@
 import Link from "next/link";
+import Image from "next/image";
+
+// Helper component for optimized sponsor images
+function SponsorImage({ src, name }: { src: string; name: string }) {
+  // Ensure we have a valid src path
+  const validSrc = (src && src.trim().length > 0) ? src : "/placeholder.svg";
+  return (
+    <Image
+      src={validSrc}
+      alt={`${name} logo`}
+      width={150}
+      height={100}
+      loading="lazy"
+      className={`${name === "BharatCloud" ? "max-h-48" : name === "Olive Hospital" ? "max-h-36" : "max-h-24"} max-w-full object-contain rounded-lg`}
+      style={{ width: "auto", height: "auto" }}
+    />
+  );
+}
 
 const SPONSORS = [
   {
     name: "AWS",
-    src: "AWS.png",
+    src: "/AWS.png",
     tier: "Platinum Sponsor",
   },
   {
@@ -112,9 +130,8 @@ export function SponsorsSection() {
                       className="rounded-xl border border-white/10 bg-black/20 p-6 backdrop-blur-sm hover:border-pink-500/30 transition-colors flex flex-col items-center"
                       style={{
                         boxShadow: "0 0 20px rgba(236, 72, 153, 0.1)",
-                        animation: `float ${
-                          3 + (i % 2)
-                        }s ease-in-out infinite ${i * 0.2}s`,
+                        animation: `float ${3 + (i % 2)
+                          }s ease-in-out infinite ${i * 0.2}s`,
                       }}
                     >
                       {SPONSOR_LINKS[s.name] ? (
@@ -125,11 +142,7 @@ export function SponsorsSection() {
                           rel="noopener noreferrer"
                         >
                           <div className="h-32 flex items-center justify-center mb-4">
-                            <img
-                              src={s.src || "/placeholder.svg"}
-                              alt={`${s.name} logo`}
-                              className={`${s.name === "BharatCloud" ? "max-h-48" : "max-h-24"} max-w-full object-contain rounded-lg`}
-                            />
+                            <SponsorImage src={s.src} name={s.name} />
                           </div>
                           <div className="text-center">
                             <h4 className="text-lg font-medium text-white">{s.name}</h4>
@@ -141,11 +154,7 @@ export function SponsorsSection() {
                       ) : (
                         <>
                           <div className="h-32 flex items-center justify-center mb-4">
-                            <img
-                              src={s.src || "/placeholder.svg"}
-                              alt={`${s.name} logo`}
-                              className={`${s.name === "BharatCloud" ? "max-h-48" : "max-h-24"} max-w-full object-contain rounded-lg`}
-                            />
+                            <SponsorImage src={s.src} name={s.name} />
                           </div>
                           <div className="text-center">
                             <h4 className="text-lg font-medium text-white">{s.name}</h4>
@@ -174,9 +183,8 @@ export function SponsorsSection() {
                       className="rounded-xl border border-white/10 bg-black/20 p-5 backdrop-blur-sm hover:border-yellow-500/30 transition-colors flex flex-col items-center"
                       style={{
                         boxShadow: "0 0 20px rgba(245, 158, 11, 0.1)",
-                        animation: `float ${
-                          3 + (i % 2)
-                        }s ease-in-out infinite ${i * 0.2}s`,
+                        animation: `float ${3 + (i % 2)
+                          }s ease-in-out infinite ${i * 0.2}s`,
                       }}
                     >
                       {SPONSOR_LINKS[s.name] ? (
@@ -187,11 +195,7 @@ export function SponsorsSection() {
                           rel="noopener noreferrer"
                         >
                           <div className="h-32 flex items-center justify-center mb-4">
-                            <img
-                              src={s.src || "/placeholder.svg"}
-                              alt={`${s.name} logo`}
-                              className={`${s.name === "Olive Hospital" ? "max-h-36" : "max-h-32"} max-w-full object-contain rounded-lg`}
-                            />
+                            <SponsorImage src={s.src} name={s.name} />
                           </div>
                           <div className="text-center">
                             <h4 className="text-lg font-medium text-white">{s.name}</h4>
@@ -236,9 +240,8 @@ export function SponsorsSection() {
                       className="rounded-xl border border-white/10 bg-black/20 p-4 backdrop-blur-sm hover:border-gray-400/30 transition-colors flex flex-col items-center"
                       style={{
                         boxShadow: "0 0 15px rgba(148, 163, 184, 0.1)",
-                        animation: `float ${
-                          3 + (i % 2)
-                        }s ease-in-out infinite ${i * 0.2}s`,
+                        animation: `float ${3 + (i % 2)
+                          }s ease-in-out infinite ${i * 0.2}s`,
                       }}
                     >
                       {SPONSOR_LINKS[s.name] ? (
@@ -298,9 +301,8 @@ export function SponsorsSection() {
                       className="rounded-xl border border-white/10 bg-black/20 p-5 backdrop-blur-sm hover:border-amber-700/30 transition-colors flex flex-col items-center"
                       style={{
                         boxShadow: "0 0 20px rgba(180, 83, 9, 0.1)",
-                        animation: `float ${
-                          3 + (i % 2)
-                        }s ease-in-out infinite ${i * 0.2}s`,
+                        animation: `float ${3 + (i % 2)
+                          }s ease-in-out infinite ${i * 0.2}s`,
                       }}
                     >
                       {SPONSOR_LINKS[s.name] ? (
@@ -311,11 +313,7 @@ export function SponsorsSection() {
                           rel="noopener noreferrer"
                         >
                           <div className="h-32 flex items-center justify-center mb-4">
-                            <img
-                              src={s.src || "/placeholder.svg"}
-                              alt={`${s.name} logo`}
-                              className="max-h-32 max-w-full object-contain rounded-lg"
-                            />
+                            <SponsorImage src={s.src} name={s.name} />
                           </div>
                           <div className="text-center">
                             <h4 className="text-lg font-medium text-white">{s.name}</h4>
@@ -327,11 +325,7 @@ export function SponsorsSection() {
                       ) : (
                         <>
                           <div className="h-32 flex items-center justify-center mb-4">
-                            <img
-                              src={s.src || "/placeholder.svg"}
-                              alt={`${s.name} logo`}
-                              className="max-h-32 max-w-full object-contain rounded-lg"
-                            />
+                            <SponsorImage src={s.src} name={s.name} />
                           </div>
                           <div className="text-center">
                             <h4 className="text-lg font-medium text-white">{s.name}</h4>
@@ -360,9 +354,8 @@ export function SponsorsSection() {
                       className="rounded-xl border border-white/10 bg-black/40 p-4 backdrop-blur-sm hover:border-green-600/30 transition-colors flex flex-col items-center"
                       style={{
                         boxShadow: "0 0 15px rgba(22, 163, 74, 0.12)",
-                        animation: `float ${
-                          3 + (i % 2)
-                        }s ease-in-out infinite ${i * 0.2}s`,
+                        animation: `float ${3 + (i % 2)
+                          }s ease-in-out infinite ${i * 0.2}s`,
                       }}
                     >
                       {SPONSOR_LINKS[s.name] ? (
@@ -409,7 +402,7 @@ export function SponsorsSection() {
               </div>
             </div>
 
-            
+
 
             {/* Hydration Partner */}
             <div className="mb-8">
@@ -424,9 +417,8 @@ export function SponsorsSection() {
                       className="rounded-xl border border-white/10 bg-black/40 p-3 backdrop-blur-sm hover:border-cyan-600/30 transition-colors flex flex-col items-center"
                       style={{
                         boxShadow: "0 0 15px rgba(8, 145, 178, 0.12)",
-                        animation: `float ${
-                          3 + (i % 2)
-                        }s ease-in-out infinite ${i * 0.2}s`,
+                        animation: `float ${3 + (i % 2)
+                          }s ease-in-out infinite ${i * 0.2}s`,
                       }}
                     >
                       {SPONSOR_LINKS[s.name] ? (

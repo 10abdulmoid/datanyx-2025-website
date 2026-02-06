@@ -1,27 +1,28 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
+import dynamic from "next/dynamic";
 import Navbar from "../components/navbar";
 import HeroSection from "../components/hero-section";
-// import AnnouncementBanner from "@/components/ui/AnnouncementBanner";
 import RegistrationClosedBanner from '@/components/ui/RegistrationClosedBanner';
-import AboutSection from "../components/sections/about/about-section";
-import DomainsSection from "../components/sections/tracks/tracks-section";
-import ScheduleSection from "../components/sections/timeline/schedule-section";
-import PrizesSection from "@/components/sections/prizes/prizes-section";
-import SponsorsSection from "../components/sections/sponsors/sponsors-section";
-import FaqsSection from "../components/sections/faqs/faqs-section";
-import Organizers from "@/components/sections/organizers/organizers";
-import Footer from "../components/footer";
 import FullscreenPreloader from "@/components/ui/PreLoader";
-import CommunityPartnersSection from "@/components/sections/community_partners/page";
-// import ChatInterface from "../components/ChatInterface";
+
+// Lazy load below-fold sections for faster initial load
+const AboutSection = dynamic(() => import("../components/sections/about/about-section"));
+const DomainsSection = dynamic(() => import("../components/sections/tracks/tracks-section"));
+const ScheduleSection = dynamic(() => import("../components/sections/timeline/schedule-section"));
+const PrizesSection = dynamic(() => import("@/components/sections/prizes/prizes-section"));
+const SponsorsSection = dynamic(() => import("../components/sections/sponsors/sponsors-section"));
+const FaqsSection = dynamic(() => import("../components/sections/faqs/faqs-section"));
+const Organizers = dynamic(() => import("@/components/sections/organizers/organizers"));
+const CommunityPartnersSection = dynamic(() => import("@/components/sections/community_partners/page"));
+const Footer = dynamic(() => import("../components/footer"));
 
 export default function Page() {
   const [scrollY, setScrollY] = useState(0);
   const [ready, setReady] = useState(false);
 
-  const sessionSkip = false;
+  const sessionSkip = true;
   useEffect(() => {
     if (!sessionSkip) return;
     const seen = sessionStorage.getItem("dnx_seen") === "1";
@@ -58,7 +59,7 @@ export default function Page() {
       {!ready && (
         <FullscreenPreloader
           src="/assets/datanyx25logo.png"
-          durationMs={2800}
+          durationMs={1500}
           onDone={handlePreloaderDone}
         />
       )}

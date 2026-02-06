@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import Background from "@/components/ui/background";
 import "./globals.css";
 import { ReactLenis } from "@/utils/lenis";
-import { SmoothCursor } from "@/components/ui/cursor";
 import { poppins } from "@/lib/fonts";
+import { CursorWrapper } from "@/components/ui/cursor-wrapper";
 
 export const viewport = {
   themeColor: "#1E3A8A",
@@ -141,7 +141,7 @@ export default function RootLayout({
       </head>
       <body className={`relative ${poppins.className}`}>
         <Background />
-        <SmoothCursor
+        <CursorWrapper
           size={17}
           color="black"
           showTrail={false}

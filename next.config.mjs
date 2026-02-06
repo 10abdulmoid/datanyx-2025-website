@@ -8,7 +8,7 @@ const nextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
-  
+
   // Optimize images for better performance
   images: {
     formats: ['image/avif', 'image/webp'],
@@ -19,7 +19,7 @@ const nextConfig = {
 
   // Enable compression
   compress: true,
-  
+
   // Enable React strict mode for better error detection
   reactStrictMode: true,
 
@@ -28,7 +28,7 @@ const nextConfig = {
 
   // Experimental features for better performance
   experimental: {
-    optimizePackageImports: ['framer-motion', 'lucide-react', '@tabler/icons-react'],
+    optimizePackageImports: ['framer-motion', 'lucide-react', '@tabler/icons-react', 'react-icons', '@heroui/react'],
   },
 }
 
