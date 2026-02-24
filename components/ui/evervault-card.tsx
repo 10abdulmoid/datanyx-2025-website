@@ -1,8 +1,19 @@
 "use client";
 import { useMotionValue } from "motion/react";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback, useRef } from "react";
 import { useMotionTemplate, motion } from "motion/react";
 import { cn } from "@/lib/utils";
+
+const characters =
+  "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+const generateRandomString = (length: number) => {
+  let result = "";
+  for (let i = 0; i < length; i++) {
+    result += characters.charAt(Math.floor(Math.random() * characters.length));
+  }
+  return result;
+};
 
 export const EvervaultCard = ({
   text,
@@ -11,24 +22,32 @@ export const EvervaultCard = ({
   text?: string;
   className?: string;
 }) => {
-  let mouseX = useMotionValue(0);
-  let mouseY = useMotionValue(0);
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
 
   const [randomString, setRandomString] = useState("");
+  const throttleRef = useRef(false);
 
   useEffect(() => {
-    let str = generateRandomString(1500);
-    setRandomString(str);
+    setRandomString(generateRandomString(1500));
   }, []);
 
-  function onMouseMove({ currentTarget, clientX, clientY }: any) {
-    let { left, top } = currentTarget.getBoundingClientRect();
+  // Throttle random string regeneration to max once every 100ms instead of every mouse move
+  const onMouseMove = useCallback(({ currentTarget, clientX, clientY }: React.MouseEvent) => {
+    const { left, top } = currentTarget.getBoundingClientRect();
     mouseX.set(clientX - left);
     mouseY.set(clientY - top);
 
-    const str = generateRandomString(1500);
-    setRandomString(str);
-  }
+    if (!throttleRef.current) {
+      throttleRef.current = true;
+      requestAnimationFrame(() => {
+        setRandomString(generateRandomString(1500));
+        setTimeout(() => {
+          throttleRef.current = false;
+        }, 100);
+      });
+    }
+  }, [mouseX, mouseY]);
 
   return (
     <div
@@ -57,9 +76,9 @@ export const EvervaultCard = ({
   );
 };
 
-export function CardPattern({ mouseX, mouseY, randomString }: any) {
-  let maskImage = useMotionTemplate`radial-gradient(250px at ${mouseX}px ${mouseY}px, white, transparent)`;
-  let style = { maskImage, WebkitMaskImage: maskImage };
+export function CardPattern({ mouseX, mouseY, randomString }: { mouseX: any; mouseY: any; randomString: string }) {
+  const maskImage = useMotionTemplate`radial-gradient(250px at ${mouseX}px ${mouseY}px, white, transparent)`;
+  const style = { maskImage, WebkitMaskImage: maskImage };
 
   return (
     <div className="pointer-events-none">
@@ -79,16 +98,6 @@ export function CardPattern({ mouseX, mouseY, randomString }: any) {
     </div>
   );
 }
-
-const characters =
-  "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-export const generateRandomString = (length: number) => {
-  let result = "";
-  for (let i = 0; i < length; i++) {
-    result += characters.charAt(Math.floor(Math.random() * characters.length));
-  }
-  return result;
-};
 
 export const Icon = ({ className, ...rest }: any) => {
   return (

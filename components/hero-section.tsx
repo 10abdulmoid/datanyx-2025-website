@@ -1,65 +1,8 @@
 'use client'
 
-import Link from 'next/link'
-import Image from 'next/image'
-import { useEffect, useMemo, useState, useRef } from 'react'
-import StarBorder from '@/components/ui/StarBorder_button'
-  import { Poppins } from "next/font/google";
-import DevfolioButton from "@/components/DevfolioButton";
-
-
-  const poppins = Poppins({
-    subsets: ["latin"],
-    weight: ["600"],
-  });
-
-function useCountdown(targetISO: string) {
-  const target = useMemo(() => new Date(targetISO).getTime(), [targetISO])
-  const [remaining, setRemaining] = useState(0)
-  const [isClient, setIsClient] = useState(false)
-
-  useEffect(() => {
-    setIsClient(true)
-    setRemaining(target - Date.now())
-    const id = setInterval(() => setRemaining(target - Date.now()), 1000)
-    return () => clearInterval(id)
-  }, [target])
-
-  const clamp = Math.max(0, remaining)
-  const d = Math.floor(clamp / (1000 * 60 * 60 * 24))
-  const h = Math.floor((clamp / (1000 * 60 * 60)) % 24)
-  const m = Math.floor((clamp / (1000 * 60)) % 60)
-  const s = Math.floor((clamp / 1000) % 60)
-  return { d, h, m, s, done: clamp <= 0, isClient }
-}
-
-function TimeBlock({ label, value }: { label: string; value: number }) {
-  const v = String(value).padStart(2, '0')
-  return (
-    <div className="grid grid-cols-1 text-center">
-      <span className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-foreground tabular-nums">
-        {v}
-      </span>
-      <span className="text-[11px] sm:text-xs md:text-sm text-muted-foreground">
-        {label}
-      </span>
-    </div>
-  )
-}
+import { useEffect, useRef } from 'react'
 
 export function HeroSection() {
-  // useEffect(() => {
-  //   const script = document.createElement('script');
-  //   script.src = 'https://apply.devfolio.co/v2/sdk.js';
-  //   script.async = true;
-  //   script.defer = true;
-  //   document.body.appendChild(script);
-  //   return () => {
-  //     document.body.removeChild(script);
-  //   }
-  // }, []);
-  //  Countdown to registration deadline: November 18, 2025, 11:59 PM IST (18:29:59 UTC)
-  const { d, h, m, s, done, isClient } = useCountdown('2025-11-21T18:29:59Z')
   const sphereRef = useRef<HTMLDivElement>(null)
   const contentRef = useRef<HTMLDivElement>(null)
   const bottomRef = useRef<HTMLDivElement>(null)
@@ -205,11 +148,9 @@ export function HeroSection() {
           backfaceVisibility: 'hidden',
           pointerEvents: 'none',
         }}
-      >
-        {/* <WireframeSphere /> */}
-      </div>
+      />
 
-      {/* Centered Logo + Countdown + Button */}
+      {/* Centered Logo */}
       <div
         ref={contentRef}
         className="fixed hero-content"
@@ -225,109 +166,13 @@ export function HeroSection() {
         }}
       >
         <div className="flex flex-col items-center gap-2 md:gap-3" style={{ pointerEvents: 'none' }}>
-          {/* Logo */}
+          {/* Logo — using native img to avoid Next.js Image overhead for a decorative hero element */}
           <img
             src="/assets/datanyx25logo.png"
             alt="DATANYX Logo"
             className="logo-image"
             style={{ pointerEvents: 'none' }}
           />
-
-          {/* Countdown
-          <div className="flex flex-col items-center gap-1" style={{ pointerEvents: 'none' }}>
-            {!done && (
-              <p className="text-[10px] sm:text-xs md:text-sm font-medium text-muted-foreground uppercase tracking-wide"
-              style={{ fontFamily: 'Orbitron, monospace' }}>
-                Time left to register
-              </p>
-            )}
-
-            <div
-              aria-label="Registration countdown"
-              className="inline-flex items-center justify-center gap-3 sm:gap-3 rounded-xl border border-border/60 bg-background/60 px-4 sm:px-5 md:px-6 py-2.5 sm:py-3.5 backdrop-blur"
-              style={{ filter: 'drop-shadow(0 0 10px rgba(255, 255, 255, 0.2))' }}
-            >
-              {!isClient ? (
-                <span className="text-sm sm:text-base md:text-lg text-foreground font-medium">
-                  Loading...
-                </span>
-              ) : done ? (
-                <span className="text-sm sm:text-base md:text-lg text-foreground font-medium">
-                  Registrations are now closed!
-                </span>
-              ) : (
-                <>
-                  <TimeBlock label="Days" value={d} />
-                  <span aria-hidden="true" className="text-lg sm:text-xl md:text-2xl text-muted-foreground">:</span>
-                  <TimeBlock label="Hours" value={h} />
-                  <span aria-hidden="true" className="text-lg sm:text-xl md:text-2xl text-muted-foreground">:</span>
-                  <TimeBlock label="Minutes" value={m} />
-                  <span aria-hidden="true" className="text-lg sm:text-xl md:text-2xl text-muted-foreground">:</span>
-                  <TimeBlock label="Seconds" value={s} />
-                </>
-              )}
-            </div>
-          </div> */}
-
-          {/* Apply with Devfolio Button */}
-          {/* <DevfolioButton slug="datanyx-2025" theme="dark" width="280px" height="50px" />
-          <p className="text-sm text-gray-400 mt-4">
-            Powered by Devfolio
-          </p> */}
-          {!done && (
-        <div
-          className="w-full flex justify-center mt-2 sm:mt-3"
-          style={{
-            pointerEvents: "auto",
-            position: "relative",
-            zIndex: 9999,
-          }}
-        >
-
-          {/* <Link
-            href="https://devfolio.co/datanyx-2025"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={`
-              flex items-center justify-center
-              min-w-[200px] max-w-full
-              px-5 sm:px-6 py-2 sm:py-2.5
-              rounded-sm
-              bg-[#23282d]
-              text-[#f8fafc]
-              text-[16px] font-medium
-              shadow-sm
-              hover:bg-[#171a1f]
-              transition-[background]
-              duration-150
-              gap-3
-              cursor-pointer
-              outline-none
-              ${poppins.className}
-            `}
-          >
-            <Image
-              src="/icons/devfolio_main.png"
-              alt="Devfolio"
-              width={24}
-              height={24}
-              className="rounded-sm object-contain"
-              priority
-            />
-            <span style={{ whiteSpace: "nowrap" }}>Apply with Devfolio</span>
-          </Link> */}
-        </div>
-      )}
-          <StarBorder
-            as="a"
-            href="/datasets"
-            rel="noopener noreferrer"
-            color="white"
-            speed="6s"
-            className="cursor-pointer mx-auto mt-6 md:mt-6 lg:mt-6 pointer-events-auto"
-          >
-            Datasets Live 🎉
-          </StarBorder>
         </div>
       </div>
 
