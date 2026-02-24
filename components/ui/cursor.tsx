@@ -128,10 +128,8 @@ export function SmoothCursor({
   onCursorLeave,
   disabled = false,
 }: SmoothCursorProps) {
-  const [isMoving, setIsMoving] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
-  const [isClicking, setIsClicking] = useState(false);
-  const [trail, setTrail] = useState<Position[]>([]);
+  const trailRef = useRef<Position[]>([]);
   const [isMobile, setIsMobile] = useState(false);
 
   const lastMousePos = useRef<Position>({ x: 0, y: 0 });
@@ -193,10 +191,7 @@ export function SmoothCursor({
     const updateTrail = (pos: Position) => {
       if (!showTrail) return;
 
-      setTrail(function (prev) {
-        var newTrail = [pos].concat(prev.slice(0, trailLength - 1));
-        return newTrail;
-      });
+      trailRef.current = [pos].concat(trailRef.current.slice(0, trailLength - 1));
     };
 
     const findMagneticElement = (x: number, y: number) => {
@@ -256,16 +251,9 @@ export function SmoothCursor({
         previousAngle.current = currentAngle;
 
         scale.set(0.95);
-        setIsMoving(true);
-
-        const timeout = setTimeout(function () {
+        setTimeout(function () {
           scale.set(1);
-          setIsMoving(false);
         }, 150);
-
-        return function () {
-          return clearTimeout(timeout);
-        };
       }
     };
 
@@ -283,14 +271,12 @@ export function SmoothCursor({
 
     const handleMouseDown = function () {
       if (scaleOnClick) {
-        setIsClicking(true);
         scale.set(0.8);
       }
     };
 
     const handleMouseUp = function () {
       if (scaleOnClick) {
-        setIsClicking(false);
         scale.set(1);
       }
     };
@@ -345,7 +331,7 @@ export function SmoothCursor({
   return (
     <>
       {/* Trail Effect */}
-      {showTrail && trail.map(function (pos, index) {
+      {showTrail && trailRef.current.map(function (pos: Position, index: number) {
         return (
           <motion.div
             key={index}

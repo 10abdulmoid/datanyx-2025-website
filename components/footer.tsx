@@ -1,32 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import {
-  AnimatedTooltip,
-  type AnimatedTooltipItem,
-} from "@/components/ui/animated-tooltip";
-
-const DEFAULT_PEOPLE: AnimatedTooltipItem[] = [
-  {
-    id: 1,
-    name: "Mohammed Osman",
-    designation: "FULL STACK DEVELOPER",
-    image: "/osman.JPG",
-  },
-  {
-    id: 2,
-    name: "Abdul Moid",
-    designation: "Developer",
-    image: "/moid_webmaster.jpg",
-  },
-  {
-    id: 3,
-    name: "Saad Riyan",
-    designation: "Developer",
-    image: "/saad_riyan_vicechair.jpg",
-  },
-]; //
-
-const people = DEFAULT_PEOPLE;
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -55,11 +28,11 @@ export function Footer() {
               className="text-gray-300 mb-4 leading-relaxed max-w-md mx-auto md:mx-0"
               style={{ fontFamily: "Poppins, sans-serif" }}
             >
-              Telangana’s flagship 24-hour datathon returns — bigger, bolder,
+              Telangana&apos;s flagship 24-hour datathon returns — bigger, bolder,
               and more transformative. Dive into the world of data science, AI,
               and cloud innovation where ideas become impact. Collaborate and
               create breakthroughs that shape the next era of technology — this
-              is DATANYX’25.
+              is DATANYX&apos;25.
             </p>
           </div>
 
@@ -114,7 +87,7 @@ export function Footer() {
               {/* Manual and Campus Location */}
               <div>
                 <div className="font-medium text-white">Event Venue</div>
-                <div>Muffakham Jah College of Engineering & Tech</div>
+                <div>Muffakham Jah College of Engineering &amp; Tech</div>
                 <div>Mount Pleasant, 8-2-249, Venkateshwara Hills</div>
                 <div>Banjara Hills, Hyderabad, India</div>
                 <div className="mt-2">
@@ -132,8 +105,8 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Developers Section (white shiny text) */}
-        <div className="mt-6 flex flex-col md:flex-row items-center justify-center gap-3 text-center">
+        {/* Developer Section */}
+        <div className="mt-6 flex flex-col md:flex-row items-center justify-center gap-4 text-center">
           <style jsx>{`
             .glow-text {
               color: #fff;
@@ -151,19 +124,27 @@ export function Footer() {
             }
           `}</style>
 
-          <span
-            className="glow-text text-lg font-bold tracking-wide"
+          {/* Developer card - horizontal on desktop, vertical on mobile */}
+          <div
+            className="flex flex-col md:flex-row items-center gap-3 md:gap-4"
             style={{ fontFamily: "Poppins, sans-serif" }}
           >
-            {/* DATANYX'25 WEB TEAM : <img src="/assets/datanyx25logo.png" alt="Datanyx Logo" /> */}
-          </span>
-
-          {/* <div
-            className="flex flex-wrap justify-center gap-2 scale-90"
-            style={{ fontFamily: "Poppins, sans-serif" }}
-          >
-            <AnimatedTooltip items={people} />
-          </div> */}
+            {/* On mobile (vertical): label on top, image below */}
+            {/* On desktop (horizontal): image left, label right */}
+            <div className="w-14 h-14 rounded-full overflow-hidden border-2 border-white ring-1 ring-white/10 shadow-md flex-shrink-0 order-2 md:order-1">
+              <Image
+                src="/osman.JPG"
+                alt="Mohammed Osman"
+                width={56}
+                height={56}
+                className="h-full w-full object-cover object-top"
+              />
+            </div>
+            <div className="flex flex-col items-center md:items-start order-1 md:order-2">
+              <span className="text-white text-sm font-semibold">Mohammed Osman</span>
+              <span className="text-gray-400 text-xs uppercase tracking-wider">Developer</span>
+            </div>
+          </div>
         </div>
 
         {/* Footer Bottom */}
@@ -172,13 +153,13 @@ export function Footer() {
             className="text-gray-400 text-sm"
             style={{ fontFamily: "Poppins, sans-serif" }}
           >
-            © {currentYear} Datanyx.All rights reserved.
+            © {currentYear} Datanyx. All rights reserved.
           </div>
 
           <div className="flex flex-wrap justify-center gap-6 text-sm">
             <Link
               href="/coc"
-              target="_blank "
+              target="_blank"
               className="text-gray-400 hover:text-white transition-colors"
               style={{ fontFamily: "Poppins, sans-serif" }}
             >

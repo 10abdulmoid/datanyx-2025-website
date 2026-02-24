@@ -1,25 +1,28 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
+import dynamic from "next/dynamic";
 import Navbar from "../components/navbar";
 import HeroSection from "../components/hero-section";
-// import AnnouncementBanner from "@/components/ui/AnnouncementBanner";
 import RegistrationClosedBanner from '@/components/ui/RegistrationClosedBanner';
-import AboutSection from "../components/sections/about/about-section";
-import DomainsSection from "../components/sections/tracks/tracks-section";
-import ScheduleSection from "../components/sections/timeline/schedule-section";
-import PrizesSection from "@/components/sections/prizes/prizes-section";
-import SponsorsSection from "../components/sections/sponsors/sponsors-section";
-import FaqsSection from "../components/sections/faqs/faqs-section";
-import Organizers from "@/components/sections/organizers/organizers";
-import Footer from "../components/footer";
 import FullscreenPreloader from "@/components/ui/PreLoader";
-import CommunityPartnersSection from "@/components/sections/community_partners/page";
-// import ChatInterface from "../components/ChatInterface";
+
+// Lazy load below-fold sections — they aren't visible until the user scrolls
+const AboutSection = dynamic(() => import("../components/sections/about/about-section"), { ssr: false });
+const DomainsSection = dynamic(() => import("../components/sections/tracks/tracks-section"), { ssr: false });
+const ScheduleSection = dynamic(() => import("../components/sections/timeline/schedule-section"), { ssr: false });
+const PrizesSection = dynamic(() => import("@/components/sections/prizes/prizes-section"), { ssr: false });
+const SponsorsSection = dynamic(() => import("../components/sections/sponsors/sponsors-section"), { ssr: false });
+const FaqsSection = dynamic(() => import("../components/sections/faqs/faqs-section"), { ssr: false });
+const Organizers = dynamic(() => import("@/components/sections/organizers/organizers"), { ssr: false });
+const CommunityPartnersSection = dynamic(() => import("@/components/sections/community_partners/page"), { ssr: false });
+const Footer = dynamic(() => import("../components/footer"), { ssr: false });
 
 export default function Page() {
-  const [scrollY, setScrollY] = useState(0);
   const [ready, setReady] = useState(false);
+  const scrollProgressRef = useRef(0);
+  const contentWrapperRef = useRef<HTMLDivElement>(null);
+  const rafIdRef = useRef(0);
 
   const sessionSkip = false;
   useEffect(() => {
@@ -33,12 +36,33 @@ export default function Page() {
     setReady(true);
   }, [sessionSkip]);
 
-  // Scroll tracking
+  // Throttled scroll tracking using rAF — avoids setState on every scroll event
   useEffect(() => {
-    const onScroll = () => setScrollY(window.scrollY);
+    const updateOpacity = () => {
+      const halfVH = window.innerHeight / 2;
+      const progress = Math.min(window.scrollY / halfVH, 1);
+      scrollProgressRef.current = progress;
+
+      if (contentWrapperRef.current) {
+        contentWrapperRef.current.style.opacity = String(progress);
+        contentWrapperRef.current.style.visibility = progress > 0.1 ? "visible" : "hidden";
+      }
+      rafIdRef.current = 0;
+    };
+
+    const onScroll = () => {
+      if (!rafIdRef.current) {
+        rafIdRef.current = requestAnimationFrame(updateOpacity);
+      }
+    };
+
     window.addEventListener("scroll", onScroll, { passive: true });
+    // Initial update
+    updateOpacity();
+
     return () => {
       window.removeEventListener("scroll", onScroll);
+      if (rafIdRef.current) cancelAnimationFrame(rafIdRef.current);
     };
   }, []);
 
@@ -49,9 +73,6 @@ export default function Page() {
     }
     window.scrollTo(0, 0);
   }, []);
-
-  const halfViewportHeight = typeof window !== "undefined" ? window.innerHeight / 2 : 400;
-  const scrollProgress = Math.min(scrollY / halfViewportHeight, 1);
 
   return (
     <>
@@ -72,16 +93,16 @@ export default function Page() {
       >
         <Navbar />
         <div className="fixed bottom-0 left-0 w-full z-[100] flex flex-col">
-          {/* <AnnouncementBanner /> */}
           <RegistrationClosedBanner />
         </div>
         <HeroSection />
         <div
+          ref={contentWrapperRef}
           className="relative z-10"
           style={{
-            opacity: scrollProgress,
+            opacity: 0,
             transition: "opacity 0.3s ease-out",
-            visibility: scrollProgress > 0.1 ? "visible" : "hidden",
+            visibility: "hidden",
           }}
         >
           <div className="absolute inset-0 -z-10 pointer-events-none" />
@@ -95,8 +116,6 @@ export default function Page() {
           <Organizers />
           <Footer />
         </div>
-        {/* Chat Interface - Lazy loaded */}
-        {/* {ready && <ChatInterface />} */}
       </main>
     </>
   );
